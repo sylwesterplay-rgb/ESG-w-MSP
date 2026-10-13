@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sylwesterplay-rgb.github.io/ESG-w-MSP/sitemap.xml
