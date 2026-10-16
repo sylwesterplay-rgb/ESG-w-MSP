@@ -25,8 +25,14 @@ def posts():
 def cloud_upload(path,ident):
     url=f"https://api.cloudinary.com/v1_1/{CLOUD}/video/upload"
     with path.open("rb") as fh:
-        resp=requests.post(url,data={"upload_preset":os.environ["CLOUDINARY_UPLOAD_PRESET"],"folder":"esg360_tiktok","public_id":ident,"overwrite":"false"},files={"file":(path.name,fh,"video/mp4")},timeout=180)
-    resp.raise_for_status(); result=resp.json()
+        resp=requests.post(url,data={"upload_preset":os.environ["CLOUDINARY_UPLOAD_PRESET"]},files={"file":(path.name,fh,"video/mp4")},timeout=180)
+    if not resp.ok:
+        try:
+            info=resp.json().get("error",{}).get("message","Unknown Cloudinary error")
+        except ValueError:
+            info="Non-JSON response from Cloudinary"
+        raise RuntimeError(f"Cloudinary upload failed (HTTP {resp.status_code}): {str(info)[:500]}")
+    result=resp.json()
     video=result["secure_url"]
     if result.get("resource_type")!="video" or not video.startswith(f"https://res.cloudinary.com/{CLOUD}/video/upload/"):
         raise RuntimeError("Unexpected Cloudinary response")
