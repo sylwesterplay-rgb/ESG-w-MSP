@@ -27,6 +27,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - name: Install Python dependencies in GitHub cloud
         run: python -m pip install -r automation/tiktok/requirements.txt
+      - name: Validate Python code before external uploads
+        run: python -m py_compile automation/tiktok/render.py automation/tiktok/publish.py
       - name: Safe render-only test (no publishing)
         if: ${{ github.event_name == 'workflow_dispatch' && !inputs.live_publish }}
         env:
@@ -34,6 +36,20 @@ jobs:
         run: |
           python automation/tiktok/render.py
           ffprobe -v error -show_entries stream=codec_type,codec_name,width,height -show_entries format=duration -of json automation/tiktok/generated/vsme-3-kroki.mp4
+      - name: Test newly generated soundtrack and video before live actions
+        if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
+        env:
+          EPISODE_ID: piecdanych
+        run: |
+          python automation/tiktok/render.py
+          ffprobe -v error -show_entries stream=codec_type -of csv=p=0 automation/tiktok/generated/piecdanych.mp4 | grep -q '^audio
+        if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          CLOUDINARY_UPLOAD_PRESET: ${{ secrets.CLOUDINARY_UPLOAD_PRESET }}
+        run: python automation/tiktok/publish.py
+
+          ffprobe -v error -show_entries stream=width,height -of csv=p=0 automation/tiktok/generated/piecdanych.mp4 | grep -q '1080,1920'
       - name: Render, upload, schedule and verify in Buffer (live)
         if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
         env:
