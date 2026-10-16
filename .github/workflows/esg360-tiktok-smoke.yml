@@ -1,0 +1,29 @@
+name: ESG360 TikTok - render smoke test
+on:
+  pull_request:
+    paths:
+      - 'automation/tiktok/**'
+      - '.github/workflows/esg360-tiktok-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  render-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r automation/tiktok/requirements.txt
+      - name: Render without API keys or publishing
+        env:
+          EPISODE_ID: vsme-3-kroki
+        run: python automation/tiktok/render.py
+      - name: Verify video container
+        run: |
+          test -s automation/tiktok/generated/vsme-3-kroki.mp4
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 automation/tiktok/generated/vsme-3-kroki.mp4 | grep -Fx '1080,1920'
+          ffprobe -v error -show_entries format=duration -of default=nw=1 automation/tiktok/generated/vsme-3-kroki.mp4
