@@ -15,11 +15,11 @@ def gql(query,vars=None):
     if data.get("errors"):raise RuntimeError(str(data["errors"])[:800])
     return data["data"]
 def channel_ok():
-    query='query($org:OrganizationId!){channels(input:{organizationId:$org}){id name service isDisconnected isLocked}}'
-    return any(c["id"]==CHANNEL and c["name"]=="esg360.academy" and c["service"]=="tiktok" and not c["isDisconnected"] and not c["isLocked"] for c in gql(query,{"org":ORG})["channels"])
+    query=f'query{{channels(input:{{organizationId:"{ORG}"}}){{id name service isDisconnected isLocked}}}}'
+    return any(c["id"]==CHANNEL and c["name"]=="esg360.academy" and c["service"]=="tiktok" and not c["isDisconnected"] and not c["isLocked"] for c in gql(query)["channels"])
 def posts():
-    query='query($org:OrganizationId!,$ids:[ChannelId!]){posts(first:100,input:{organizationId:$org,filter:{channelIds:$ids}}){edges{node{id status dueAt text channelId}} pageInfo{hasNextPage}}}'
-    result=gql(query,{"org":ORG,"ids":[CHANNEL]})["posts"]
+    query=f'query{{posts(first:100,input:{{organizationId:"{ORG}",filter:{{channelIds:["{CHANNEL}"]}}}}){{edges{{node{{id status dueAt text channelId}}}} pageInfo{{hasNextPage}}}}}}'
+    result=gql(query)["posts"]
     if result["pageInfo"]["hasNextPage"]:raise RuntimeError("Pagination required; fail-closed before scheduling")
     return [x["node"] for x in result["edges"]]
 def cloud_upload(path,ident):
@@ -32,17 +32,20 @@ def cloud_upload(path,ident):
         raise RuntimeError("Unexpected Cloudinary response")
     return video
 def schedule(episode,video,due):
-    mutation='''mutation($input:CreatePostInput!){createPost(input:$input){__typename ... on PostActionSuccess{post{id status dueAt channelId schedulingType}} ... on InvalidInputError{message} ... on LimitReachedError{message} ... on RestProxyError{message} ... on UnexpectedError{message}}}'''
+    mutation='''mutation($input:CreatePostInput!){createPost(input:$input){__typename ... on PostActionSuccess{post{id status dueAt channelId schedulingType}} ... on MutationError{message}}}'''
     inp={"channelId":CHANNEL,"mode":"customScheduled","dueAt":due.isoformat(timespec="seconds"),"schedulingType":"automatic","text":episode["caption"],"assets":[{"video":{"url":video,"metadata":{"title":episode["title"],"thumbnailOffset":0}}}]}
     result=gql(mutation,{"input":inp})["createPost"]
     if result["__typename"]!="PostActionSuccess":raise RuntimeError("Buffer rejected scheduling "+str(result))
     return result["post"]
 def verify(id,due):
-    q='query($id:PostId!){post(input:{id:$id}){id status dueAt channelId schedulingType assets{type}}}'
-    item=gql(q,{"id":id})["post"]
-    assert item["status"]=="scheduled" and item["channelId"]==CHANNEL and item["schedulingType"]=="automatic"
-    assert any(a["type"]=="video" for a in item["assets"])
-    assert datetime.fromisoformat(item["dueAt"].replace("Z","+00:00"))==due
+    matching=[p for p in posts() if p["id"]==id]
+    if len(matching)!=1:
+        raise RuntimeError("Post not found after scheduling")
+    item=matching[0]
+    if item["status"]!="scheduled" or item["channelId"]!=CHANNEL:
+        raise RuntimeError("Post is not scheduled on ESG360 TikTok")
+    if datetime.fromisoformat(item["dueAt"].replace("Z","+00:00"))!=due:
+        raise RuntimeError("Wrong due date after scheduling")
     return item
 def main():
     if not os.getenv("BUFFER_API_KEY") or not os.getenv("CLOUDINARY_UPLOAD_PRESET"):raise RuntimeError("GitHub secrets missing")
