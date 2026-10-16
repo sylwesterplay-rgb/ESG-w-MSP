@@ -1,0 +1,26 @@
+name: ESG360 TikTok Autopilot (pilot)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 10 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: esg360-tiktok-scheduler
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Python dependencies in GitHub cloud
+        run: python -m pip install -r automation/tiktok/requirements.txt
+      - name: Render, upload and schedule next video
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          CLOUDINARY_UPLOAD_PRESET: ${{ secrets.CLOUDINARY_UPLOAD_PRESET }}
+        run: python automation/tiktok/publish.py
