@@ -45,8 +45,6 @@ jobs:
           python automation/tiktok/check_media.py automation/tiktok/generated/piecdanych.mp4
       - name: Generate ESG360 infographic for LinkedIn library
         if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
-        env:
-          EPISODE_ID: piecdanych
         run: python automation/tiktok/infographic.py
       - name: Save generated infographic for editorial review
         if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
