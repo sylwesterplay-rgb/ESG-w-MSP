@@ -1,5 +1,5 @@
 """ESG360: branded 9:16 educational slideshow; cloud runner only."""
-import json, os, subprocess, shutil
+import json, os, subprocess, shutil, wave, math, struct
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 BASE=Path(__file__).resolve().parent
@@ -32,6 +32,28 @@ for i,(heading,body) in enumerate(episode["slides"]):
     im.save(frames/f"{i:03d}.png")
 video=out/(episode["id"]+".mp4")
 n=len(episode["slides"]); seconds=n*5
-cmd=["ffmpeg","-hide_banner","-loglevel","error","-y","-framerate","1/5","-i",str(frames/"%03d.png"),"-f","lavfi","-i","anullsrc=channel_layout=stereo:sample_rate=44100","-shortest","-c:v","libx264","-pix_fmt","yuv420p","-r","30","-c:a","aac","-t",str(seconds),"-movflags","+faststart",str(video)]
+
+# Original synthesised ambient bed; no external music or samples.
+music=out/(episode["id"]+"-original-music.wav")
+rate=22050
+chords=[[130.81,164.81,196.00],[146.83,174.61,220.00],[110.00,130.81,164.81],[130.81,174.61,196.00]]
+with wave.open(str(music),"wb") as w:
+    w.setnchannels(1)
+    w.setsampwidth(2)
+    w.setframerate(rate)
+    block=bytearray()
+    for k in range(int(seconds*rate)):
+        t=k/rate
+        chord=chords[int(t/5)%len(chords)]
+        envelope=min(1.0,t/0.4,max(0.0,(seconds-t)/1.0))
+        signal=sum(math.sin(2*math.pi*f*t)*0.18+math.sin(2*math.pi*2*f*t)*0.03 for f in chord)
+        block.extend(struct.pack("<h",int(max(-1,min(1,signal*envelope))*14000)))
+        if len(block)>88200:
+            w.writeframes(block)
+            block.clear()
+    if block:
+        w.writeframes(block)
+
+cmd=["ffmpeg","-hide_banner","-loglevel","error","-y","-framerate","1/5","-i",str(frames/"%03d.png"),"-i",str(music),"-shortest","-c:v","libx264","-pix_fmt","yuv420p","-r","30","-c:a","aac","-b:a","128k","-t",str(seconds),"-movflags","+faststart",str(video)]
 subprocess.run(cmd,check=True)
 print(f"RENDERED {video} {video.stat().st_size}")
