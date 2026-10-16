@@ -28,7 +28,7 @@ jobs:
       - name: Install Python dependencies in GitHub cloud
         run: python -m pip install -r automation/tiktok/requirements.txt
       - name: Verify Python syntax
-        run: python -m py_compile automation/tiktok/render.py automation/tiktok/publish.py
+        run: python -m py_compile automation/tiktok/render.py automation/tiktok/publish.py automation/tiktok/infographic.py
       - name: Render-only manual test
         if: ${{ github.event_name == 'workflow_dispatch' && !inputs.live_publish }}
         env:
@@ -43,6 +43,18 @@ jobs:
         run: |
           python automation/tiktok/render.py
           python automation/tiktok/check_media.py automation/tiktok/generated/piecdanych.mp4
+      - name: Generate ESG360 infographic for LinkedIn library
+        if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
+        env:
+          EPISODE_ID: piecdanych
+        run: python automation/tiktok/infographic.py
+      - name: Save generated infographic for editorial review
+        if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: esg360-linkedin-infographic
+          path: automation/tiktok/generated/*-linkedin-infographic.png
+          retention-days: 14
       - name: Generate upload and schedule by Buffer
         if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
         env:
