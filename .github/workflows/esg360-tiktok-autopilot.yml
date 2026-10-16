@@ -1,13 +1,13 @@
-name: ESG360 TikTok Autopilot (pilot)
+name: ESG360 TikTok Autopilot
 on:
   schedule:
-    - cron: "20 10 * * *"
+    - cron: '20 10 * * *'
   workflow_dispatch:
     inputs:
       live_publish:
-        description: 'Publish to Cloudinary and schedule in Buffer? Default is safe rendering test.'
-        required: true
+        description: 'Publish to Cloudinary and Buffer? Leave unchecked for render-only test.'
         type: boolean
+        required: true
         default: false
 permissions:
   contents: read
@@ -15,7 +15,7 @@ concurrency:
   group: esg360-tiktok-scheduler
   cancel-in-progress: false
 jobs:
-  verify:
+  publish:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -27,30 +27,23 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - name: Install Python dependencies in GitHub cloud
         run: python -m pip install -r automation/tiktok/requirements.txt
-      - name: Validate Python code before external uploads
+      - name: Verify Python syntax
         run: python -m py_compile automation/tiktok/render.py automation/tiktok/publish.py
-      - name: Safe render-only test (no publishing)
+      - name: Render-only manual test
         if: ${{ github.event_name == 'workflow_dispatch' && !inputs.live_publish }}
         env:
           EPISODE_ID: vsme-3-kroki
         run: |
           python automation/tiktok/render.py
-          ffprobe -v error -show_entries stream=codec_type,codec_name,width,height -show_entries format=duration -of json automation/tiktok/generated/vsme-3-kroki.mp4
-      - name: Test newly generated soundtrack and video before live actions
+          ffprobe -v error -show_streams automation/tiktok/generated/vsme-3-kroki.mp4
+      - name: Check new soundtrack before live publication
         if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
         env:
           EPISODE_ID: piecdanych
         run: |
           python automation/tiktok/render.py
-          ffprobe -v error -show_entries stream=codec_type -of csv=p=0 automation/tiktok/generated/piecdanych.mp4 | grep -q '^audio
-        if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
-        env:
-          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
-          CLOUDINARY_UPLOAD_PRESET: ${{ secrets.CLOUDINARY_UPLOAD_PRESET }}
-        run: python automation/tiktok/publish.py
-
-          ffprobe -v error -show_entries stream=width,height -of csv=p=0 automation/tiktok/generated/piecdanych.mp4 | grep -q '1080,1920'
-      - name: Render, upload, schedule and verify in Buffer (live)
+          python automation/tiktok/check_media.py automation/tiktok/generated/piecdanych.mp4
+      - name: Generate upload and schedule by Buffer
         if: ${{ github.event_name == 'schedule' || inputs.live_publish }}
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
