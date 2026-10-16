@@ -28,6 +28,34 @@
     "caption": "VSME w małej firmie? Zacznij od zakresu, odpowiedzialności i dokumentacji danych. #ESG #VSME #MŚP #ESG360Academy"
   },
   {
+    "id": "vsmestart",
+    "title": "Od czego zacząć VSME?",
+    "date": "2026-10-21",
+    "slides": [
+      [
+        "VSME: OD CZEGO ZACZĄĆ?",
+        "Nie zaczynaj od pustego formularza."
+      ],
+      [
+        "SPRAWDŹ POTRZEBY",
+        "Ustal, kto oczekuje danych ESG."
+      ],
+      [
+        "WYBIERZ ZAKRES",
+        "Dopasuj ujawnienia do działalności."
+      ],
+      [
+        "WYZNACZ OSOBĘ",
+        "Ustal odpowiedzialność za dane."
+      ],
+      [
+        "ZBIERAJ DOWODY",
+        "Wiedza. Narzędzia. Wdrożenie."
+      ]
+    ],
+    "caption": "Od czego zacząć VSME?. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
     "id": "piecdanych",
     "title": "5 źródeł danych ESG",
     "date": "2026-10-22",
@@ -64,6 +92,34 @@
     "caption": "Zanim przygotujesz ujawnienia VSME, sprawdź źródła danych. #ESG #VSME #DaneESG #ESG360Academy"
   },
   {
+    "id": "ryzyko",
+    "title": "ESG: ryzyka i koszty",
+    "date": "2026-10-23",
+    "slides": [
+      [
+        "ESG TO PRAKTYKA",
+        "Dobre dane wspierają decyzje."
+      ],
+      [
+        "KOSZTY ENERGII",
+        "Sprawdź zużycie i faktury."
+      ],
+      [
+        "RYZYKA",
+        "Zidentyfikuj istotne obszary."
+      ],
+      [
+        "ODPOWIEDZIALNOŚĆ",
+        "Przypisz osoby i terminy."
+      ],
+      [
+        "ESG360 ACADEMY",
+        "Od wiedzy do wdrożenia."
+      ]
+    ],
+    "caption": "ESG: ryzyka i koszty. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
     "id": "esg-nietylkoraport",
     "title": "ESG to nie tylko raport",
     "date": "2026-10-24",
@@ -90,5 +146,345 @@
       ]
     ],
     "caption": "ESG w MŚP to konkretne procesy i lepsza jakość danych, nie tylko raport. #ESG #MŚP #VSME #ESG360Academy"
+  },
+  {
+    "id": "dane-start",
+    "title": "Przygotuj dane do raportu",
+    "date": "2026-10-25",
+    "slides": [
+      [
+        "RAPORT NIE JEST POCZĄTKIEM",
+        "Najpierw uporządkuj informacje."
+      ],
+      [
+        "ROK I ZAKRES",
+        "Ustal okres oraz granice danych."
+      ],
+      [
+        "JEDNOSTKI",
+        "Sprawdź kWh, m³, tony i osoby."
+      ],
+      [
+        "ŹRÓDŁA",
+        "Zachowaj dokumenty i rejestry."
+      ],
+      [
+        "SPRAWDŹ JAKOŚĆ",
+        "Dane muszą być weryfikowalne."
+      ]
+    ],
+    "caption": "Przygotuj dane do raportu. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "energia",
+    "title": "Energia w raportowaniu ESG",
+    "date": "2026-10-26",
+    "slides": [
+      [
+        "ILE ENERGII ZUŻYWASZ?",
+        "Zacznij od danych, które masz."
+      ],
+      [
+        "PRĄD",
+        "Zbierz faktury i odczyty."
+      ],
+      [
+        "GAZ I CIEPŁO",
+        "Oddziel nośniki energii."
+      ],
+      [
+        "OKRES",
+        "Porównuj spójne przedziały."
+      ],
+      [
+        "ESG360 ACADEMY",
+        "Zapisz źródła i jednostki."
+      ]
+    ],
+    "caption": "Energia w raportowaniu ESG. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "bhp",
+    "title": "Ludzie i BHP w ESG",
+    "date": "2026-10-27",
+    "slides": [
+      [
+        "ESG TO TEŻ LUDZIE",
+        "Nie ograniczaj się do emisji."
+      ],
+      [
+        "ZATRUDNIENIE",
+        "Sprawdź aktualne dane kadrowe."
+      ],
+      [
+        "BHP",
+        "Zbierz informacje o wypadkach."
+      ],
+      [
+        "SZKOLENIA",
+        "Dokumentuj działania i daty."
+      ],
+      [
+        "CHROŃ DANE",
+        "Raportuj z poszanowaniem prywatności."
+      ]
+    ],
+    "caption": "Ludzie i BHP w ESG. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "scope1-2",
+    "title": "Scope 1 i Scope 2",
+    "date": "2026-10-28",
+    "slides": [
+      [
+        "SCOPE 1 CZY SCOPE 2?",
+        "To dwa różne źródła emisji."
+      ],
+      [
+        "SCOPE 1",
+        "Emisje bezpośrednie z własnych źródeł."
+      ],
+      [
+        "SCOPE 2",
+        "Emisje z zakupionej energii."
+      ],
+      [
+        "DANE",
+        "Zacznij od paliw i faktur."
+      ],
+      [
+        "ESG360 ACADEMY",
+        "Przeliczaj z właściwymi wskaźnikami."
+      ]
+    ],
+    "caption": "Scope 1 i Scope 2. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "scope3",
+    "title": "Scope 3 bez pomyłek",
+    "date": "2026-10-29",
+    "slides": [
+      [
+        "CO OZNACZA SCOPE 3?",
+        "Pozostałe pośrednie emisje."
+      ],
+      [
+        "ŁAŃCUCH WARTOŚCI",
+        "Dostawcy, transport i inne kategorie."
+      ],
+      [
+        "GRANICE",
+        "Zapisz, co obejmujesz."
+      ],
+      [
+        "METODYKA",
+        "Ujawniasz założenia i ograniczenia."
+      ],
+      [
+        "WAŻNE",
+        "Nie myl Scope 3 z sekcją standardu."
+      ]
+    ],
+    "caption": "Scope 3 bez pomyłek. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "ecovadis-vsme",
+    "title": "EcoVadis a VSME",
+    "date": "2026-10-30",
+    "slides": [
+      [
+        "ECOVADIS CZY VSME?",
+        "Nie służą dokładnie temu samemu."
+      ],
+      [
+        "VSME",
+        "Dobrowolny standard raportowania."
+      ],
+      [
+        "ECOVADIS",
+        "Ocena praktyk zrównoważonego rozwoju."
+      ],
+      [
+        "WSPÓLNA BAZA",
+        "Dokumenty, dane i dowody."
+      ],
+      [
+        "ESG360 ACADEMY",
+        "Jedna dobra dokumentacja, różne zastosowania."
+      ]
+    ],
+    "caption": "EcoVadis a VSME. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "dokumenty",
+    "title": "5 dokumentów na start",
+    "date": "2026-10-31",
+    "slides": [
+      [
+        "DOKUMENTY ESG NA START",
+        "Nie zaczynaj od setek plików."
+      ],
+      [
+        "ZAKRES I OSOBY",
+        "Kto i za co odpowiada?"
+      ],
+      [
+        "REJESTR DANYCH",
+        "Skąd pochodzą wskaźniki?"
+      ],
+      [
+        "RYZYKA I DZIAŁANIA",
+        "Co jest istotne dla firmy?"
+      ],
+      [
+        "DOWODY",
+        "Zapisz źródła i wersje dokumentów."
+      ]
+    ],
+    "caption": "5 dokumentów na start. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "role",
+    "title": "Kto odpowiada za ESG?",
+    "date": "2026-11-01",
+    "slides": [
+      [
+        "KTO MA DANE ESG?",
+        "Nie zawsze jeden dział."
+      ],
+      [
+        "FINANSE",
+        "Energia, koszty i dokumenty."
+      ],
+      [
+        "KADRY I BHP",
+        "Pracownicy, szkolenia, bezpieczeństwo."
+      ],
+      [
+        "OPERACJE",
+        "Odpady i dane procesowe."
+      ],
+      [
+        "KOORDYNATOR",
+        "Łączy informacje w całość."
+      ]
+    ],
+    "caption": "Kto odpowiada za ESG?. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "piecpytan",
+    "title": "Pięć pytań przed VSME",
+    "date": "2026-11-02",
+    "slides": [
+      [
+        "ZANIM NAPISZESZ RAPORT",
+        "Zadaj sobie pięć pytań."
+      ],
+      [
+        "01 / PO CO?",
+        "Kto potrzebuje tych danych?"
+      ],
+      [
+        "02 / CO?",
+        "Jakie wskaźniki są potrzebne?"
+      ],
+      [
+        "03 / KTO?",
+        "Kto ma dane źródłowe?"
+      ],
+      [
+        "04 / JAK?",
+        "Jak sprawdzamy ich poprawność?"
+      ],
+      [
+        "05 / DOWÓD",
+        "Czy możemy je udokumentować?"
+      ]
+    ],
+    "caption": "Pięć pytań przed VSME. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "bank-klient",
+    "title": "Dlaczego bank pyta o ESG?",
+    "date": "2026-11-04",
+    "slides": [
+      [
+        "BANK PYTA O ESG?",
+        "To często kwestia oceny ryzyka."
+      ],
+      [
+        "ENERGIA",
+        "Może wpływać na profil kosztów."
+      ],
+      [
+        "ZARZĄDZANIE",
+        "Liczą się odpowiedzialności i procesy."
+      ],
+      [
+        "WIARYGODNOŚĆ",
+        "Dane wymagają dobrych źródeł."
+      ],
+      [
+        "ESG360 ACADEMY",
+        "Przygotuj odpowiedzi bez chaosu."
+      ]
+    ],
+    "caption": "Dlaczego bank pyta o ESG?. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "odpady",
+    "title": "Odpady i BDO — porządek w danych",
+    "date": "2026-11-06",
+    "slides": [
+      [
+        "ODPADY W ESG",
+        "Liczy się spójność ewidencji."
+      ],
+      [
+        "KODY ODPADÓW",
+        "Sprawdź właściwą klasyfikację."
+      ],
+      [
+        "MASA",
+        "Zbieraj dane w tonach."
+      ],
+      [
+        "SPOSÓB POSTĘPOWANIA",
+        "Nie myl odzysku z recyklingiem."
+      ],
+      [
+        "ŹRÓDŁA",
+        "Oprzyj liczby na ewidencji."
+      ]
+    ],
+    "caption": "Odpady i BDO — porządek w danych. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+  },
+  {
+    "id": "audyt-trail",
+    "title": "Ścieżka audytowa ESG",
+    "date": "2026-11-08",
+    "slides": [
+      [
+        "CZY TWOJE DANE SĄ ODTWARZALNE?",
+        "Liczy się dowód."
+      ],
+      [
+        "ŹRÓDŁO",
+        "Zachowaj fakturę lub rejestr."
+      ],
+      [
+        "OBLICZENIE",
+        "Zapisz metodę i założenia."
+      ],
+      [
+        "ODPOWIEDZIALNOŚĆ",
+        "Kto sprawdził wskaźnik?"
+      ],
+      [
+        "WERSJA",
+        "Ustal datę i historię zmian."
+      ]
+    ],
+    "caption": "Ścieżka audytowa ESG. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
   }
 ]
