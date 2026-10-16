@@ -9,6 +9,7 @@ TZ=ZoneInfo("Europe/Warsaw")
 ORG="6acd37f788a9ef6b52a7a556"
 CHANNEL="6ad1dedb778b240e2f269549"
 CLOUD="dvtirowe"
+LINKEDIN="6acd3857778b240e2febc3c1"
 def gql(query,vars=None):
     response=requests.post("https://api.buffer.com",headers={"Authorization":"Bearer "+os.environ["BUFFER_API_KEY"]},json={"query":query,"variables":vars or {}},timeout=45)
     response.raise_for_status();data=response.json()
@@ -17,8 +18,8 @@ def gql(query,vars=None):
 def channel_ok():
     query=f'query{{channels(input:{{organizationId:"{ORG}"}}){{id name service isDisconnected isLocked}}}}'
     return any(c["id"]==CHANNEL and c["name"]=="esg360.academy" and c["service"]=="tiktok" and not c["isDisconnected"] and not c["isLocked"] for c in gql(query)["channels"])
-def posts():
-    query=f'query{{posts(first:100,input:{{organizationId:"{ORG}",filter:{{channelIds:["{CHANNEL}"]}}}}){{edges{{node{{id status dueAt text channelId}}}} pageInfo{{hasNextPage}}}}}}'
+def posts(channel=CHANNEL):
+    query=f'query{{posts(first:100,input:{{organizationId:"{ORG}",filter:{{channelIds:["{channel}"]}}}}){{edges{{node{{id status dueAt text channelId}}}} pageInfo{{hasNextPage}}}}}}'
     result=gql(query)["posts"]
     if result["pageInfo"]["hasNextPage"]:raise RuntimeError("Pagination required; fail-closed before scheduling")
     return [x["node"] for x in result["edges"]]
@@ -37,18 +38,18 @@ def cloud_upload(path,ident):
     if result.get("resource_type")!="video" or not video.startswith(f"https://res.cloudinary.com/{CLOUD}/video/upload/"):
         raise RuntimeError("Unexpected Cloudinary response")
     return video
-def schedule(episode,video,due):
+def schedule(episode,video,due,channel=CHANNEL):
     mutation='''mutation($input:CreatePostInput!){createPost(input:$input){__typename ... on PostActionSuccess{post{id status dueAt channelId schedulingType}} ... on MutationError{message}}}'''
-    inp={"channelId":CHANNEL,"mode":"customScheduled","dueAt":due.isoformat(timespec="seconds"),"schedulingType":"automatic","text":episode["caption"],"assets":[{"video":{"url":video,"metadata":{"title":episode["title"],"thumbnailOffset":0}}}]}
+    inp={"channelId":channel,"mode":"customScheduled","dueAt":due.isoformat(timespec="seconds"),"schedulingType":"automatic","text":episode["caption"],"assets":[{"video":{"url":video,"metadata":{"title":episode["title"],"thumbnailOffset":0}}}]}
     result=gql(mutation,{"input":inp})["createPost"]
     if result["__typename"]!="PostActionSuccess":raise RuntimeError("Buffer rejected scheduling "+str(result))
     return result["post"]
-def verify(id,due):
-    matching=[p for p in posts() if p["id"]==id]
+def verify(id,due,channel=CHANNEL):
+    matching=[p for p in posts(channel) if p["id"]==id]
     if len(matching)!=1:
         raise RuntimeError("Post not found after scheduling")
     item=matching[0]
-    if item["status"]!="scheduled" or item["channelId"]!=CHANNEL:
+    if item["status"]!="scheduled" or item["channelId"]!=channel:
         raise RuntimeError("Post is not scheduled on ESG360 TikTok")
     if datetime.fromisoformat(item["dueAt"].replace("Z","+00:00"))!=due:
         raise RuntimeError("Wrong due date after scheduling")
@@ -58,6 +59,7 @@ def main():
     if not channel_ok():raise RuntimeError("Wrong TikTok channel, stopping")
     now=datetime.now(TZ)
     existing=posts()
+    existing_li=posts(LINKEDIN)
     episodes=json.loads((BASE/"episodes.json").read_text())
     for ep in episodes:
         due=datetime.combine(datetime.fromisoformat(ep["date"]).date(),time(18,0),TZ)
@@ -72,6 +74,19 @@ def main():
         post=schedule(ep,video,due)
         confirmed=verify(post["id"],due.astimezone(ZoneInfo("UTC")))
         print(json.dumps({"status":"SCHEDULED_VERIFIED","postId":confirmed["id"],"dueAt":confirmed["dueAt"],"videoUrl":video},ensure_ascii=False))
+        # On Tue/Thu/Sat, publish the same verified video to the COMPANY LinkedIn page, later in the day.
+        if due.weekday() in (1,3,5):
+            li_due=due.replace(hour=19,minute=0)
+            li_caption=ep["caption"]+" #Biznes"
+            li_ep=dict(ep,caption=li_caption)
+            li_dup=any(p["status"] in ("scheduled","sending","sent") and (p["text"]==li_caption or (p["dueAt"] and datetime.fromisoformat(p["dueAt"].replace("Z","+00:00"))==li_due.astimezone(ZoneInfo("UTC")))) for p in existing_li)
+            if not li_dup:
+                try:
+                    li=schedule(li_ep,video,li_due,LINKEDIN)
+                    li_check=verify(li["id"],li_due.astimezone(ZoneInfo("UTC")),LINKEDIN)
+                    print(json.dumps({"status":"LINKEDIN_SCHEDULED","id":li_check["id"]},ensure_ascii=False))
+                except Exception as exc:
+                    print("LINKEDIN_SCHEDULE_FAILED "+str(exc)[:350])
         return
     print("NO_NEW_EPISODE")
 if __name__=="__main__":main()
