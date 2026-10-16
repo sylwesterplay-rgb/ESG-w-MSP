@@ -1,15 +1,19 @@
 name: ESG360 TikTok Autopilot (pilot)
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '20 10 * * *'
+    inputs:
+      live_publish:
+        description: 'Publish to Cloudinary and schedule in Buffer? Default is safe rendering test.'
+        required: true
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
   group: esg360-tiktok-scheduler
   cancel-in-progress: false
 jobs:
-  publish:
+  verify:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -21,7 +25,15 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - name: Install Python dependencies in GitHub cloud
         run: python -m pip install -r automation/tiktok/requirements.txt
-      - name: Render, upload and schedule next video
+      - name: Safe render-only test (no publishing)
+        if: ${{ !inputs.live_publish }}
+        env:
+          EPISODE_ID: vsme-3-kroki
+        run: |
+          python automation/tiktok/render.py
+          ffprobe -v error -show_entries stream=codec_type,codec_name,width,height -show_entries format=duration -of json automation/tiktok/generated/vsme-3-kroki.mp4
+      - name: Render, upload, schedule and verify in Buffer (live)
+        if: ${{ inputs.live_publish }}
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
           CLOUDINARY_UPLOAD_PRESET: ${{ secrets.CLOUDINARY_UPLOAD_PRESET }}
