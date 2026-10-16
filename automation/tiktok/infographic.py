@@ -1,10 +1,17 @@
 """Create a 1080x1350 ESG360 infographic PNG from approved episode facts."""
 import json, os, textwrap
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 BASE=Path(__file__).resolve().parent
 episodes=json.loads((BASE/"episodes.json").read_text(encoding="utf-8"))
-id_=os.getenv("EPISODE_ID","piecdanych")
+id_=os.getenv("EPISODE_ID")
+if not id_:
+    local_date=datetime.now(ZoneInfo("Europe/Warsaw")).date().isoformat()
+    upcoming=[e for e in episodes if e["date"]>=local_date]
+    episode_auto=upcoming[0] if upcoming else episodes[-1]
+    id_=episode_auto["id"]
 episode=next(e for e in episodes if e["id"]==id_)
 FONT="/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 BOLD="/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
