@@ -27,3 +27,15 @@ if "--render-smoke" in sys.argv:
         assert p.exists(),p
         with p.open(encoding="utf-8-sig",newline="") as fh:assert len(list(csv.reader(fh,delimiter=";")))>1
     print("RENDER AND CSV SMOKE TEST PASSED",video)
+
+if "--render-all" in sys.argv:
+    for i,ep in enumerate(demos,1):
+        os.environ["EPISODE_ID"]=ep["id"]
+        subprocess.run([sys.executable,str(BASE/"render.py")],check=True)
+        video=BASE/"generated"/(ep["id"]+".mp4")
+        subprocess.run([sys.executable,str(BASE/"check_media.py"),str(video)],check=True)
+        start=BASE/"generated"/"demo_files"/(ep["id"]+"_START.csv")
+        filled=BASE/"generated"/"demo_files"/(ep["id"]+"_WYPELNIONY.csv")
+        assert start.exists() and filled.exists()
+        print("PREVIEW_READY",i,"/",len(demos),ep["demo"]["module"],video,flush=True)
+    print("ALL_MODULE_PREVIEWS_READY",len(demos),flush=True)
