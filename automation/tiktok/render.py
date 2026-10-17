@@ -1,9 +1,12 @@
 """ESG360: branded 9:16 educational slideshow; cloud runner only."""
-import json, os, subprocess, shutil, wave, math, struct
+import json, os, subprocess, shutil, wave, math, struct, sys
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 BASE=Path(__file__).resolve().parent
 episode=next(e for e in json.loads((BASE/"episodes.json").read_text()) if e["id"]==os.environ["EPISODE_ID"])
+if episode.get("demo"):
+    subprocess.run([sys.executable,str(BASE/"render_demo.py")],check=True)
+    raise SystemExit(0)
 out=BASE/"generated"; out.mkdir(exist_ok=True)
 frames=out/episode["id"];frames.mkdir(exist_ok=True)
 regular="/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
