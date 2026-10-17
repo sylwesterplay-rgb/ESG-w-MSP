@@ -181,398 +181,824 @@
   },
   {
     "id": "ryzyko",
-    "title": "ESG: ryzyka i koszty",
+    "title": "Moduł 01 — Kwalifikacja ścieżki ESG",
     "date": "2026-10-23",
     "slides": [
       [
-        "ESG TO PRAKTYKA",
-        "Dobre dane wspierają decyzje."
-      ],
-      [
-        "KOSZTY ENERGII",
-        "Sprawdź zużycie i faktury."
-      ],
-      [
-        "RYZYKA",
-        "Zidentyfikuj istotne obszary."
-      ],
-      [
-        "ODPOWIEDZIALNOŚĆ",
-        "Przypisz osoby i terminy."
-      ],
-      [
-        "ESG360 ACADEMY",
-        "Od wiedzy do wdrożenia."
+        "Moduł 01 — Kwalifikacja ścieżki ESG",
+        "Zapisz kartę kwalifikacyjną. Wymogi prawne sprawdź indywidualnie."
       ]
     ],
-    "caption": "ESG: ryzyka i koszty. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 01 | Kwalifikacja ścieżki ESG. Pokazujemy krok po kroku pracę na przykładowym pliku CHK-REG-01 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "01",
+      "code": "CHK-REG-01",
+      "filename": "CHK-REG-01_Kwalifikacja.csv",
+      "headers": [
+        "Pole",
+        "Wartość",
+        "Dowód"
+      ],
+      "rows": [
+        [
+          "Organizacja",
+          "Firma Demo",
+          "Dane fikcyjne"
+        ],
+        [
+          "Okres",
+          "",
+          "Dokumenty firmy"
+        ],
+        [
+          "Odbiorca danych",
+          "",
+          "Zapytanie klienta"
+        ],
+        [
+          "Podstawa ścieżki",
+          "",
+          "Weryfikacja prawna"
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Okres",
+          "value": "2025",
+          "instruction": "Ustal rok objęty danymi"
+        },
+        {
+          "field": "Odbiorca danych",
+          "value": "Klient",
+          "instruction": "Sprawdź, kto wymaga danych"
+        },
+        {
+          "field": "Podstawa ścieżki",
+          "value": "Do weryfikacji",
+          "instruction": "Nie zakładaj automatycznie obowiązku"
+        }
+      ],
+      "result": "Zapisz kartę kwalifikacyjną. Wymogi prawne sprawdź indywidualnie.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "esg-nietylkoraport",
-    "title": "ESG to nie tylko raport",
+    "title": "Moduł 02 — Wyznacz zespół ESG",
     "date": "2026-10-24",
     "slides": [
       [
-        "ESG TO NIE TYLKO RAPORT",
-        "To także codzienne decyzje biznesowe."
-      ],
-      [
-        "LEPSZE DANE",
-        "Porządkuj zużycie energii i koszty."
-      ],
-      [
-        "MNIEJ NIEWIADOMYCH",
-        "Rozpoznawaj ryzyka i odpowiedzialności."
-      ],
-      [
-        "WIĘKSZA GOTOWOŚĆ",
-        "Odpowiadaj na pytania klientów i banków."
-      ],
-      [
-        "ESG360 ACADEMY",
-        "Wiedza. Narzędzia. Wdrożenie."
+        "Moduł 02 — Wyznacz zespół ESG",
+        "Efekt: projekt decyzji KORP-01; zatwierdza właściwa osoba."
       ]
     ],
-    "caption": "ESG w MŚP to konkretne procesy i lepsza jakość danych, nie tylko raport. #ESG #MŚP #VSME #ESG360Academy"
+    "caption": "Moduł 02 | Wyznacz zespół ESG. Pokazujemy krok po kroku pracę na przykładowym pliku KORP-01 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "02",
+      "code": "KORP-01",
+      "filename": "KORP-01_Decyzja.csv",
+      "headers": [
+        "Pole",
+        "Wartość",
+        "Dowód"
+      ],
+      "rows": [
+        [
+          "Projekt",
+          "ESG 2025",
+          "Przykład"
+        ],
+        [
+          "Koordynator",
+          "",
+          "Decyzja zarządu"
+        ],
+        [
+          "Termin",
+          "",
+          "Harmonogram"
+        ],
+        [
+          "Status",
+          "",
+          "Potwierdzenie"
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Koordynator",
+          "value": "Koordynator ESG",
+          "instruction": "Wyznacz właściciela"
+        },
+        {
+          "field": "Termin",
+          "value": "30.11.2026",
+          "instruction": "Ustal termin działań"
+        },
+        {
+          "field": "Status",
+          "value": "Projekt",
+          "instruction": "Przekaż do akceptacji"
+        }
+      ],
+      "result": "Efekt: projekt decyzji KORP-01; zatwierdza właściwa osoba.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "dane-start",
-    "title": "Przygotuj dane do raportu",
+    "title": "Moduł 03 — Wypełnij matrycę RACI",
     "date": "2026-10-25",
     "slides": [
       [
-        "RAPORT NIE JEST POCZĄTKIEM",
-        "Najpierw uporządkuj informacje."
-      ],
-      [
-        "ROK I ZAKRES",
-        "Ustal okres oraz granice danych."
-      ],
-      [
-        "JEDNOSTKI",
-        "Sprawdź kWh, m³, tony i osoby."
-      ],
-      [
-        "ŹRÓDŁA",
-        "Zachowaj dokumenty i rejestry."
-      ],
-      [
-        "SPRAWDŹ JAKOŚĆ",
-        "Dane muszą być weryfikowalne."
+        "Moduł 03 — Wypełnij matrycę RACI",
+        "Sprawdź, czy każda czynność ma osobę odpowiedzialną."
       ]
     ],
-    "caption": "Przygotuj dane do raportu. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 03 | Wypełnij matrycę RACI. Pokazujemy krok po kroku pracę na przykładowym pliku KORP-02 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "03",
+      "code": "KORP-02",
+      "filename": "KORP-02_RACI.csv",
+      "headers": [
+        "Proces",
+        "R",
+        "A"
+      ],
+      "rows": [
+        [
+          "Dane energetyczne",
+          "",
+          ""
+        ],
+        [
+          "Dane pracownicze",
+          "",
+          ""
+        ],
+        [
+          "Kontrola raportu",
+          "",
+          ""
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Dane energetyczne",
+          "value": "Finanse",
+          "instruction": "Kto zbiera dane?"
+        },
+        {
+          "field": "Dane pracownicze",
+          "value": "Kadry",
+          "instruction": "Kto prowadzi dane HR?"
+        },
+        {
+          "field": "Kontrola raportu",
+          "value": "Zarząd",
+          "instruction": "Kto odpowiada końcowo?"
+        }
+      ],
+      "result": "Sprawdź, czy każda czynność ma osobę odpowiedzialną.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "energia",
-    "title": "Energia w raportowaniu ESG",
+    "title": "Moduł 04 — Ustal granice danych",
     "date": "2026-10-26",
     "slides": [
       [
-        "ILE ENERGII ZUŻYWASZ?",
-        "Zacznij od danych, które masz."
-      ],
-      [
-        "PRĄD",
-        "Zbierz faktury i odczyty."
-      ],
-      [
-        "GAZ I CIEPŁO",
-        "Oddziel nośniki energii."
-      ],
-      [
-        "OKRES",
-        "Porównuj spójne przedziały."
-      ],
-      [
-        "ESG360 ACADEMY",
-        "Zapisz źródła i jednostki."
+        "Moduł 04 — Ustal granice danych",
+        "Efekt: udokumentowane granice organizacyjne i czasowe."
       ]
     ],
-    "caption": "Energia w raportowaniu ESG. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 04 | Ustal granice danych. Pokazujemy krok po kroku pracę na przykładowym pliku KORP-03A w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "04",
+      "code": "KORP-03A",
+      "filename": "KORP-03A_Granice.csv",
+      "headers": [
+        "Parametr",
+        "Wartość",
+        "Uwaga"
+      ],
+      "rows": [
+        [
+          "Organizacja",
+          "",
+          "Lista jednostek"
+        ],
+        [
+          "Okres",
+          "",
+          "Rok danych"
+        ],
+        [
+          "Zakres procesów",
+          "",
+          "Opis działań"
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Organizacja",
+          "value": "Firma Demo",
+          "instruction": "Sprawdź podmioty w grupie"
+        },
+        {
+          "field": "Okres",
+          "value": "2025",
+          "instruction": "Nie mieszaj lat"
+        },
+        {
+          "field": "Zakres procesów",
+          "value": "Zakład A",
+          "instruction": "Zapisz wyłączenia"
+        }
+      ],
+      "result": "Efekt: udokumentowane granice organizacyjne i czasowe.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "bhp",
-    "title": "Ludzie i BHP w ESG",
+    "title": "Moduł 05 — Zbuduj rejestr IRO",
     "date": "2026-10-27",
     "slides": [
       [
-        "ESG TO TEŻ LUDZIE",
-        "Nie ograniczaj się do emisji."
-      ],
-      [
-        "ZATRUDNIENIE",
-        "Sprawdź aktualne dane kadrowe."
-      ],
-      [
-        "BHP",
-        "Zbierz informacje o wypadkach."
-      ],
-      [
-        "SZKOLENIA",
-        "Dokumentuj działania i daty."
-      ],
-      [
-        "CHROŃ DANE",
-        "Raportuj z poszanowaniem prywatności."
+        "Moduł 05 — Zbuduj rejestr IRO",
+        "Oddziel wpływy, ryzyka i szanse. Ocena wymaga kontekstu."
       ]
     ],
-    "caption": "Ludzie i BHP w ESG. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 05 | Zbuduj rejestr IRO. Pokazujemy krok po kroku pracę na przykładowym pliku IRO w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "05",
+      "code": "IRO",
+      "filename": "IRO_Rejestr.csv",
+      "headers": [
+        "Zdarzenie",
+        "Typ",
+        "Właściciel"
+      ],
+      "rows": [
+        [
+          "Zużycie energii",
+          "",
+          ""
+        ],
+        [
+          "Bezpieczeństwo pracy",
+          "",
+          ""
+        ],
+        [
+          "Zakupy od dostawców",
+          "",
+          ""
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Zużycie energii",
+          "value": "Ryzyko",
+          "instruction": "Rozpoznaj wpływ na koszty"
+        },
+        {
+          "field": "Bezpieczeństwo pracy",
+          "value": "Wpływ",
+          "instruction": "Sprawdź perspektywę ludzi"
+        },
+        {
+          "field": "Zakupy od dostawców",
+          "value": "Szansa",
+          "instruction": "Ustal, kto prowadzi temat"
+        }
+      ],
+      "result": "Oddziel wpływy, ryzyka i szanse. Ocena wymaga kontekstu.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "scope1-2",
-    "title": "Scope 1 i Scope 2",
+    "title": "Moduł 06 — Oceń istotność",
     "date": "2026-10-28",
     "slides": [
       [
-        "SCOPE 1 CZY SCOPE 2?",
-        "To dwa różne źródła emisji."
-      ],
-      [
-        "SCOPE 1",
-        "Emisje bezpośrednie z własnych źródeł."
-      ],
-      [
-        "SCOPE 2",
-        "Emisje z zakupionej energii."
-      ],
-      [
-        "DANE",
-        "Zacznij od paliw i faktur."
-      ],
-      [
-        "ESG360 ACADEMY",
-        "Przeliczaj z właściwymi wskaźnikami."
+        "Moduł 06 — Oceń istotność",
+        "Wyniki są przykładowe. Oceny wymagają uzasadnienia."
       ]
     ],
-    "caption": "Scope 1 i Scope 2. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 06 | Oceń istotność. Pokazujemy krok po kroku pracę na przykładowym pliku MAT-01 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "06",
+      "code": "MAT-01",
+      "filename": "MAT-01_Punktacja.csv",
+      "headers": [
+        "Zagadnienie",
+        "Ocena 1–5",
+        "Uzasadnienie"
+      ],
+      "rows": [
+        [
+          "Energia",
+          "",
+          "Dane źródłowe"
+        ],
+        [
+          "BHP",
+          "",
+          "Rejestr zdarzeń"
+        ],
+        [
+          "Dostawcy",
+          "",
+          "Analiza zakupów"
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Energia",
+          "value": "4",
+          "instruction": "Przykładowa ocena"
+        },
+        {
+          "field": "BHP",
+          "value": "5",
+          "instruction": "Uzasadnij wagę"
+        },
+        {
+          "field": "Dostawcy",
+          "value": "3",
+          "instruction": "Zweryfikuj z zespołem"
+        }
+      ],
+      "result": "Wyniki są przykładowe. Oceny wymagają uzasadnienia.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "scope3",
-    "title": "Scope 3 bez pomyłek",
+    "title": "Moduł 07 — Zbierz paliwa do Scope 1",
     "date": "2026-10-29",
     "slides": [
       [
-        "CO OZNACZA SCOPE 3?",
-        "Pozostałe pośrednie emisje."
-      ],
-      [
-        "ŁAŃCUCH WARTOŚCI",
-        "Dostawcy, transport i inne kategorie."
-      ],
-      [
-        "GRANICE",
-        "Zapisz, co obejmujesz."
-      ],
-      [
-        "METODYKA",
-        "Ujawniasz założenia i ograniczenia."
-      ],
-      [
-        "WAŻNE",
-        "Nie myl Scope 3 z sekcją standardu."
+        "Moduł 07 — Zbierz paliwa do Scope 1",
+        "To dane fikcyjne. Emisje wymagają poprawnego wskaźnika."
       ]
     ],
-    "caption": "Scope 3 bez pomyłek. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 07 | Zbierz paliwa do Scope 1. Pokazujemy krok po kroku pracę na przykładowym pliku SROD-01 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "07",
+      "code": "SROD-01",
+      "filename": "SROD-01_Paliwa.csv",
+      "headers": [
+        "Źródło",
+        "Ilość",
+        "Jednostka"
+      ],
+      "rows": [
+        [
+          "Gaz ziemny",
+          "",
+          "m³"
+        ],
+        [
+          "Olej napędowy",
+          "",
+          "l"
+        ],
+        [
+          "Rok",
+          "",
+          "rok"
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Gaz ziemny",
+          "value": "1200",
+          "instruction": "Przepisz z faktury"
+        },
+        {
+          "field": "Olej napędowy",
+          "value": "400",
+          "instruction": "Sprawdź zużycie"
+        },
+        {
+          "field": "Rok",
+          "value": "2025",
+          "instruction": "Uzgodnij okres"
+        }
+      ],
+      "result": "To dane fikcyjne. Emisje wymagają poprawnego wskaźnika.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "ecovadis-vsme",
-    "title": "EcoVadis a VSME",
+    "title": "Moduł 08 — Zbierz prąd do Scope 2",
     "date": "2026-10-30",
     "slides": [
       [
-        "ECOVADIS CZY VSME?",
-        "Nie służą dokładnie temu samemu."
-      ],
-      [
-        "VSME",
-        "Dobrowolny standard raportowania."
-      ],
-      [
-        "ECOVADIS",
-        "Ocena praktyk zrównoważonego rozwoju."
-      ],
-      [
-        "WSPÓLNA BAZA",
-        "Dokumenty, dane i dowody."
-      ],
-      [
-        "ESG360 ACADEMY",
-        "Jedna dobra dokumentacja, różne zastosowania."
+        "Moduł 08 — Zbierz prąd do Scope 2",
+        "Nie myl ilości energii z emisjami tCO2e."
       ]
     ],
-    "caption": "EcoVadis a VSME. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 08 | Zbierz prąd do Scope 2. Pokazujemy krok po kroku pracę na przykładowym pliku SROD-01 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "08",
+      "code": "SROD-01",
+      "filename": "SROD-01_Energia.csv",
+      "headers": [
+        "Źródło",
+        "Ilość",
+        "Jednostka"
+      ],
+      "rows": [
+        [
+          "Energia elektryczna",
+          "",
+          "kWh"
+        ],
+        [
+          "Rok",
+          "",
+          "rok"
+        ],
+        [
+          "Podejście",
+          "",
+          "LB / MB"
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Energia elektryczna",
+          "value": "15000",
+          "instruction": "Suma z faktur"
+        },
+        {
+          "field": "Rok",
+          "value": "2025",
+          "instruction": "Ustal okres"
+        },
+        {
+          "field": "Podejście",
+          "value": "LB",
+          "instruction": "MB oceniaj oddzielnie"
+        }
+      ],
+      "result": "Nie myl ilości energii z emisjami tCO2e.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "dokumenty",
-    "title": "5 dokumentów na start",
+    "title": "Moduł 09 — Uzupełnij rejestr odpadów",
     "date": "2026-10-31",
     "slides": [
       [
-        "DOKUMENTY ESG NA START",
-        "Nie zaczynaj od setek plików."
-      ],
-      [
-        "ZAKRES I OSOBY",
-        "Kto i za co odpowiada?"
-      ],
-      [
-        "REJESTR DANYCH",
-        "Skąd pochodzą wskaźniki?"
-      ],
-      [
-        "RYZYKA I DZIAŁANIA",
-        "Co jest istotne dla firmy?"
-      ],
-      [
-        "DOWODY",
-        "Zapisz źródła i wersje dokumentów."
+        "Moduł 09 — Uzupełnij rejestr odpadów",
+        "Zachowaj dowód z ewidencji. Kod wpisz z dokumentu."
       ]
     ],
-    "caption": "5 dokumentów na start. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 09 | Uzupełnij rejestr odpadów. Pokazujemy krok po kroku pracę na przykładowym pliku SROD-03 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "09",
+      "code": "SROD-03",
+      "filename": "SROD-03_Odpady.csv",
+      "headers": [
+        "Pole",
+        "Wartość",
+        "Źródło"
+      ],
+      "rows": [
+        [
+          "Kod odpadu",
+          "",
+          "Ewidencja BDO"
+        ],
+        [
+          "Masa",
+          "",
+          "t"
+        ],
+        [
+          "Sposób postępowania",
+          "",
+          "Karta przekazania"
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Kod odpadu",
+          "value": "Kod z BDO",
+          "instruction": "Nie zgaduj kodów"
+        },
+        {
+          "field": "Masa",
+          "value": "2,5 t",
+          "instruction": "Przepisz masę"
+        },
+        {
+          "field": "Sposób postępowania",
+          "value": "Do weryfikacji",
+          "instruction": "Potwierdź sposób przetwarzania"
+        }
+      ],
+      "result": "Zachowaj dowód z ewidencji. Kod wpisz z dokumentu.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "role",
-    "title": "Kto odpowiada za ESG?",
+    "title": "Moduł 10 — Zbierz dane HR",
     "date": "2026-11-01",
     "slides": [
       [
-        "KTO MA DANE ESG?",
-        "Nie zawsze jeden dział."
-      ],
-      [
-        "FINANSE",
-        "Energia, koszty i dokumenty."
-      ],
-      [
-        "KADRY I BHP",
-        "Pracownicy, szkolenia, bezpieczeństwo."
-      ],
-      [
-        "OPERACJE",
-        "Odpady i dane procesowe."
-      ],
-      [
-        "KOORDYNATOR",
-        "Łączy informacje w całość."
+        "Moduł 10 — Zbierz dane HR",
+        "Używaj danych zagregowanych, nie publikuj danych osobowych."
       ]
     ],
-    "caption": "Kto odpowiada za ESG?. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 10 | Zbierz dane HR. Pokazujemy krok po kroku pracę na przykładowym pliku PRAC-01 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "10",
+      "code": "PRAC-01",
+      "filename": "PRAC-01_Pracownicy.csv",
+      "headers": [
+        "Wskaźnik",
+        "Wartość",
+        "Źródło"
+      ],
+      "rows": [
+        [
+          "Liczba pracowników",
+          "",
+          "Kadry"
+        ],
+        [
+          "Stan na dzień",
+          "",
+          "Okres"
+        ],
+        [
+          "Rodzaj umów",
+          "",
+          "Ewidencja"
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Liczba pracowników",
+          "value": "42",
+          "instruction": "Przykładowa liczba"
+        },
+        {
+          "field": "Stan na dzień",
+          "value": "31.12.2025",
+          "instruction": "Jedna data odniesienia"
+        },
+        {
+          "field": "Rodzaj umów",
+          "value": "Podział w HR",
+          "instruction": "Agreguj bez danych osób"
+        }
+      ],
+      "result": "Używaj danych zagregowanych, nie publikuj danych osobowych.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "piecpytan",
-    "title": "Pięć pytań przed VSME",
+    "title": "Moduł 11 — Przygotuj dane BHP",
     "date": "2026-11-02",
     "slides": [
       [
-        "ZANIM NAPISZESZ RAPORT",
-        "Zadaj sobie pięć pytań."
-      ],
-      [
-        "01 / PO CO?",
-        "Kto potrzebuje tych danych?"
-      ],
-      [
-        "02 / CO?",
-        "Jakie wskaźniki są potrzebne?"
-      ],
-      [
-        "03 / KTO?",
-        "Kto ma dane źródłowe?"
-      ],
-      [
-        "04 / JAK?",
-        "Jak sprawdzamy ich poprawność?"
-      ],
-      [
-        "05 / DOWÓD",
-        "Czy możemy je udokumentować?"
+        "Moduł 11 — Przygotuj dane BHP",
+        "Wskaźniki wypadkowości wymagają spójnego mianownika."
       ]
     ],
-    "caption": "Pięć pytań przed VSME. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 11 | Przygotuj dane BHP. Pokazujemy krok po kroku pracę na przykładowym pliku PRAC-02 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "11",
+      "code": "PRAC-02",
+      "filename": "PRAC-02_BHP.csv",
+      "headers": [
+        "Wskaźnik",
+        "Wartość",
+        "Dowód"
+      ],
+      "rows": [
+        [
+          "Wypadki",
+          "",
+          "Rejestr BHP"
+        ],
+        [
+          "Godziny pracy",
+          "",
+          "Kadry / BHP"
+        ],
+        [
+          "Okres",
+          "",
+          "Rok danych"
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Wypadki",
+          "value": "1",
+          "instruction": "Przykład, nie wynik firmy"
+        },
+        {
+          "field": "Godziny pracy",
+          "value": "82000",
+          "instruction": "Sprawdź jednostki"
+        },
+        {
+          "field": "Okres",
+          "value": "2025",
+          "instruction": "Zgodny z raportem"
+        }
+      ],
+      "result": "Wskaźniki wypadkowości wymagają spójnego mianownika.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "bank-klient",
-    "title": "Dlaczego bank pyta o ESG?",
+    "title": "Moduł 12 — Sprawdź dostawców",
     "date": "2026-11-04",
     "slides": [
       [
-        "BANK PYTA O ESG?",
-        "To często kwestia oceny ryzyka."
-      ],
-      [
-        "ENERGIA",
-        "Może wpływać na profil kosztów."
-      ],
-      [
-        "ZARZĄDZANIE",
-        "Liczą się odpowiedzialności i procesy."
-      ],
-      [
-        "WIARYGODNOŚĆ",
-        "Dane wymagają dobrych źródeł."
-      ],
-      [
-        "ESG360 ACADEMY",
-        "Przygotuj odpowiedzi bez chaosu."
+        "Moduł 12 — Sprawdź dostawców",
+        "Nie deklaruj akceptacji bez podpisanego oświadczenia."
       ]
     ],
-    "caption": "Dlaczego bank pyta o ESG?. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 12 | Sprawdź dostawców. Pokazujemy krok po kroku pracę na przykładowym pliku ZAK-01 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "12",
+      "code": "ZAK-01",
+      "filename": "ZAK-01_Dostawcy.csv",
+      "headers": [
+        "Pole",
+        "Wartość",
+        "Dowód"
+      ],
+      "rows": [
+        [
+          "Dostawca",
+          "Dostawca A",
+          "Przykład"
+        ],
+        [
+          "Kodeks zaakceptowany",
+          "",
+          "Oświadczenie"
+        ],
+        [
+          "Data oceny",
+          "",
+          "Ankieta SAQ"
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Kodeks zaakceptowany",
+          "value": "Do potwierdzenia",
+          "instruction": "Zbieraj dowody"
+        },
+        {
+          "field": "Data oceny",
+          "value": "04.11.2026",
+          "instruction": "Zapisz datę"
+        },
+        {
+          "field": "Dostawca",
+          "value": "Dostawca Demo",
+          "instruction": "Użyj fikcyjnego przykładu"
+        }
+      ],
+      "result": "Nie deklaruj akceptacji bez podpisanego oświadczenia.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "odpady",
-    "title": "Odpady i BDO — porządek w danych",
+    "title": "Moduł 13 — Zrób kontrolę i CAPA",
     "date": "2026-11-06",
     "slides": [
       [
-        "ODPADY W ESG",
-        "Liczy się spójność ewidencji."
-      ],
-      [
-        "KODY ODPADÓW",
-        "Sprawdź właściwą klasyfikację."
-      ],
-      [
-        "MASA",
-        "Zbieraj dane w tonach."
-      ],
-      [
-        "SPOSÓB POSTĘPOWANIA",
-        "Nie myl odzysku z recyklingiem."
-      ],
-      [
-        "ŹRÓDŁA",
-        "Oprzyj liczby na ewidencji."
+        "Moduł 13 — Zrób kontrolę i CAPA",
+        "Brak dowodu to problem do wyjaśnienia, nie fikcyjna zgodność."
       ]
     ],
-    "caption": "Odpady i BDO — porządek w danych. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 13 | Zrób kontrolę i CAPA. Pokazujemy krok po kroku pracę na przykładowym pliku CHK-01 w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "13",
+      "code": "CHK-01",
+      "filename": "CHK-01_Kontrola.csv",
+      "headers": [
+        "Test",
+        "Wynik",
+        "Działanie"
+      ],
+      "rows": [
+        [
+          "Dowód energii",
+          "",
+          ""
+        ],
+        [
+          "Kontrola jednostek",
+          "",
+          ""
+        ],
+        [
+          "Brak dokumentu",
+          "",
+          ""
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Dowód energii",
+          "value": "OK",
+          "instruction": "Potwierdź źródło"
+        },
+        {
+          "field": "Kontrola jednostek",
+          "value": "OK",
+          "instruction": "Zgodność danych"
+        },
+        {
+          "field": "Brak dokumentu",
+          "value": "Brak",
+          "instruction": "Dodaj zadanie CAPA"
+        }
+      ],
+      "result": "Brak dowodu to problem do wyjaśnienia, nie fikcyjna zgodność.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   },
   {
     "id": "audyt-trail",
-    "title": "Ścieżka audytowa ESG",
+    "title": "Moduł 14 — Zbuduj ścieżkę audytową",
     "date": "2026-11-08",
     "slides": [
       [
-        "CZY TWOJE DANE SĄ ODTWARZALNE?",
-        "Liczy się dowód."
-      ],
-      [
-        "ŹRÓDŁO",
-        "Zachowaj fakturę lub rejestr."
-      ],
-      [
-        "OBLICZENIE",
-        "Zapisz metodę i założenia."
-      ],
-      [
-        "ODPOWIEDZIALNOŚĆ",
-        "Kto sprawdził wskaźnik?"
-      ],
-      [
-        "WERSJA",
-        "Ustal datę i historię zmian."
+        "Moduł 14 — Zbuduj ścieżkę audytową",
+        "Przed publikacją raportu sprawdź kompletność i wersje dowodów."
       ]
     ],
-    "caption": "Ścieżka audytowa ESG. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "Moduł 14 | Zbuduj ścieżkę audytową. Pokazujemy krok po kroku pracę na przykładowym pliku VSME-FINAL w systemie ESG360 Academy. Dane demonstracyjne, nie rzeczywiste dane firmy. Wiedza. Narzędzia. Wdrożenie. #ESG #VSME #MŚP #ESG360Academy",
+    "demo": {
+      "module": "14",
+      "code": "VSME-FINAL",
+      "filename": "VSME-FINAL_Dowody.csv",
+      "headers": [
+        "Obszar",
+        "Źródło",
+        "Status"
+      ],
+      "rows": [
+        [
+          "Energia",
+          "SROD-01",
+          ""
+        ],
+        [
+          "Pracownicy",
+          "PRAC-01",
+          ""
+        ],
+        [
+          "Kontrola",
+          "CHK-01",
+          ""
+        ]
+      ],
+      "steps": [
+        {
+          "field": "Energia",
+          "value": "Faktury + kalkulator",
+          "instruction": "Powiąż dane"
+        },
+        {
+          "field": "Pracownicy",
+          "value": "Zbiorcze dane HR",
+          "instruction": "Pokaż źródło"
+        },
+        {
+          "field": "Kontrola",
+          "value": "Lista CHK",
+          "instruction": "Udokumentuj wynik"
+        }
+      ],
+      "result": "Przed publikacją raportu sprawdź kompletność i wersje dowodów.",
+      "disclaimer": "DANE PRZYKŁADOWE — DEMONSTRACJA"
+    }
   }
 ]
