@@ -1,0 +1,39 @@
+name: ESG360 — test modułów pracy na plikach
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'automation/tiktok/**'
+      - '.github/workflows/esg360-modules-preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          python -m pip install -r automation/tiktok/requirements.txt
+      - name: Static test of all fourteen modules
+        run: |
+          python -m py_compile automation/tiktok/render.py automation/tiktok/render_demo.py automation/tiktok/test_modules.py
+          python automation/tiktok/test_modules.py
+      - name: Render module one and verify output files
+        run: python automation/tiktok/test_modules.py --render-smoke
+      - name: Upload preview MP4 and demonstration CSV
+        uses: actions/upload-artifact@v4
+        with:
+          name: ESG360-modul-01-preview
+          path: |
+            automation/tiktok/generated/ryzyko.mp4
+            automation/tiktok/generated/demo_files/ryzyko_START.csv
+            automation/tiktok/generated/demo_files/ryzyko_WYPELNIONY.csv
+          retention-days: 14
