@@ -1,0 +1,66 @@
+name: ESG360 TikTok October 17-19 backfill
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/esg360-oct17-19-backfill.yml'
+permissions:
+  contents: read
+concurrency:
+  group: esg360-tiktok-scheduler
+  cancel-in-progress: false
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: python -m pip install -r automation/tiktok/requirements.txt
+      - name: Generate and verify only the three approved TikTok posts
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          CLOUDINARY_UPLOAD_PRESET: ${{ secrets.CLOUDINARY_UPLOAD_PRESET }}
+        run: |
+          python - <<'PY'
+          import sys, os, json, subprocess
+          from datetime import datetime, time, timedelta
+          from zoneinfo import ZoneInfo
+          sys.path.insert(0, "automation/tiktok")
+          import publish as p
+          selected = {"esg-dlaczego-teraz": "2026-10-17", "vsme-czy-obowiazkowe": "2026-10-18", "esg-pierwszy-tydzien": "2026-10-19"}
+          if not p.channel_ok():
+              raise RuntimeError("Wrong or disconnected TikTok channel")
+          episodes = json.loads((p.BASE / "episodes.json").read_text())
+          active = ("scheduled", "sending", "sent")
+          for ident, date in selected.items():
+              ep = next(e for e in episodes if e["id"] == ident)
+              if ep["date"] != date:
+                  raise RuntimeError("Unexpected episode date")
+              due = datetime.combine(datetime.fromisoformat(date).date(), time(18), p.TZ)
+              existing = p.posts()
+              if any(x["status"] in active and x["text"] == ep["caption"] for x in existing):
+                  print("SKIP_DUPLICATE", ident)
+                  continue
+              if any(x["status"] in active and x["dueAt"] and datetime.fromisoformat(x["dueAt"].replace("Z", "+00:00")) == due for x in existing):
+                  raise RuntimeError("Approved slot occupied: " + date)
+              if due <= datetime.now(p.TZ) + timedelta(minutes=60):
+                  raise RuntimeError("Approved slot too close or expired: " + date)
+              os.environ["EPISODE_ID"] = ident
+              subprocess.run([sys.executable, str(p.BASE / "render.py")], check=True)
+              video_path = p.BASE / "generated" / (ident + ".mp4")
+              subprocess.run([sys.executable, str(p.BASE / "check_media.py"), str(video_path)], check=True)
+              video = p.cloud_upload(video_path, ident)
+              result = p.schedule(ep, video, due)
+              verified = p.verify(result["id"], due)
+              print(json.dumps({"status":"SCHEDULED_VERIFIED", "episode":ident, "postId":verified["id"], "dueAt":verified["dueAt"], "channelId":verified["channelId"]}))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: esg360-oct17-19-videos
+          path: automation/tiktok/generated/
+          retention-days: 14
