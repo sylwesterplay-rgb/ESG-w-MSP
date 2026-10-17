@@ -27,8 +27,10 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - name: Install Python dependencies in GitHub cloud
         run: python -m pip install -r automation/tiktok/requirements.txt
-      - name: Verify Python syntax
-        run: python -m py_compile automation/tiktok/render.py automation/tiktok/publish.py automation/tiktok/infographic.py
+      - name: Verify Python syntax and security guard
+        run: |
+          python -m py_compile automation/tiktok/render.py automation/tiktok/publish.py automation/tiktok/social_guard.py automation/tiktok/test_social_guard.py automation/tiktok/infographic.py
+          python -m unittest discover -s automation/tiktok -p 'test_social_guard.py' -v
       - name: Render-only manual test
         if: ${{ github.event_name == 'workflow_dispatch' && !inputs.live_publish }}
         env:
