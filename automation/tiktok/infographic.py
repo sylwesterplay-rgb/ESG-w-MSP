@@ -34,7 +34,11 @@ y=225
 for line in wrap(d,episode["title"].upper(),ft(62,True),940):
     d.text((75,y),line,font=ft(62,True),fill=white);y+=82
 y+=35
-items=episode["slides"][1:6]
+# Module graphics summarize the actual file operations shown in the walkthrough.
+if episode.get("demo"):
+    items=[(step["field"],step["instruction"]) for step in episode["demo"]["steps"]]
+else:
+    items=episode["slides"][1:6]
 room=1000-y
 step=min(155,max(100,int(room/max(len(items),1))))
 for ix,(head,body) in enumerate(items,1):
