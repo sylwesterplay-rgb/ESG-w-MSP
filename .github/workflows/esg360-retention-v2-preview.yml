@@ -1,0 +1,45 @@
+name: ESG360 Retention V2 Preview QA (NO PUBLISH)
+on:
+  push:
+    branches:
+      - esg360/tiktok-retention-v2-experiment
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'automation/tiktok/experiments/**'
+      - '.github/workflows/esg360-retention-v2-preview.yml'
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install media tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          python -m pip install -r automation/tiktok/requirements.txt
+      - name: Code syntax and static safety tests
+        run: |
+          python -m py_compile automation/tiktok/experiments/*.py
+          python automation/tiktok/experiments/test_retention_v2.py
+      - name: Render three isolated previews
+        run: |
+          mkdir -p /tmp/esg360-retention-v2
+          python automation/tiktok/experiments/retention_v2.py --id bank-esg-3-rzeczy --out /tmp/esg360-retention-v2/bank-esg-3-rzeczy.mp4
+          python automation/tiktok/experiments/retention_v2.py --id vsme-dobrowolne-klient --out /tmp/esg360-retention-v2/vsme-dobrowolne-klient.mp4
+          python automation/tiktok/experiments/retention_v2.py --id faktura-energia-esg --out /tmp/esg360-retention-v2/faktura-energia-esg.mp4
+      - name: Verify duration, H264, audio and vertical dimensions
+        run: python automation/tiktok/experiments/test_retention_v2.py --render-dir /tmp/esg360-retention-v2
+      - name: Save preview artifacts — review only
+        uses: actions/upload-artifact@v4
+        with:
+          name: ESG360-retention-v2-three-previews-NOT-FOR-PUBLICATION
+          path: /tmp/esg360-retention-v2/*.mp4
+          retention-days: 14
