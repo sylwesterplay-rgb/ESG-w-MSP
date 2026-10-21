@@ -1,0 +1,113 @@
+[
+  {
+    "id": "bank-esg-3-rzeczy",
+    "title": "Bank pyta o ESG? 3 rzeczy na start",
+    "caption": "Bank prosi o dane ESG? Najpierw sprawdź okres raportowania, energię z faktur i osobę odpowiedzialną za dane. Która informacja jest u Ciebie najtrudniejsza? #ESG #VSME #DaneESG #ESG360Academy",
+    "beats": [
+      {
+        "duration": 2,
+        "eyebrow": "PROBLEM W 2 SEKUNDY",
+        "headline": "BANK PYTA\nO ESG?",
+        "detail": "Nie zaczynaj od raportu."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "KROK 01 / ZAKRES",
+        "headline": "JAKI OKRES?",
+        "detail": "Ustal, za jaki rok potrzebne są dane."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "KROK 02 / FAKTURY",
+        "headline": "ILE ENERGII?",
+        "detail": "Zbierz prąd i paliwa z dokumentów."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "KROK 03 / OSOBY",
+        "headline": "KTO MA DANE?",
+        "detail": "Wskaż właściciela każdej informacji."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "JEDNO PYTANIE",
+        "headline": "CO JEST\nNAJTRUDNIEJSZE?",
+        "detail": "Energia, odpady czy BHP? Napisz ↓"
+      }
+    ]
+  },
+  {
+    "id": "vsme-dobrowolne-klient",
+    "title": "VSME jest dobrowolne. Dlaczego klient pyta?",
+    "caption": "VSME jest dobrowolnym standardem. Mimo to klient może potrzebować danych ESG do swojej oceny dostawców. Czy Twoja firma dostała już takie pytanie? #VSME #ESG #MŚP #ESG360Academy",
+    "beats": [
+      {
+        "duration": 2,
+        "eyebrow": "MIT CZY FAKT?",
+        "headline": "VSME JEST\nOBOWIĄZKOWE?",
+        "detail": "Krótka odpowiedź: nie."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "ALE JEST PYTANIE",
+        "headline": "A TWÓJ\nKLIENT?",
+        "detail": "Może oczekiwać danych o dostawcy."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "PRZYKŁAD 01",
+        "headline": "ENERGIA",
+        "detail": "KWh i źródła danych z faktur."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "PRZYKŁAD 02",
+        "headline": "PRACOWNICY",
+        "detail": "Podstawowe informacje i BHP."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "TWOJA FIRMA",
+        "headline": "JUŻ O TO\nPYTALI?",
+        "detail": "Tak czy nie? Napisz ↓"
+      }
+    ]
+  },
+  {
+    "id": "faktura-energia-esg",
+    "title": "Faktura za prąd i ESG: 3 dane do sprawdzenia",
+    "caption": "Zanim liczysz emisje, sprawdź okres rozliczenia, zużycie energii (kWh) i źródło dokumentu. Zachowaj faktury — bez danych źródłowych trudno o weryfikowalny wynik. #ESG #Energia #VSME #ESG360Academy",
+    "beats": [
+      {
+        "duration": 2,
+        "eyebrow": "PROSTY TEST",
+        "headline": "FAKTURA\nA ESG?",
+        "detail": "Sprawdź te 3 pola."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "POLE 01",
+        "headline": "OKRES",
+        "detail": "Za jaki miesiąc jest zużycie?"
+      },
+      {
+        "duration": 3,
+        "eyebrow": "POLE 02",
+        "headline": "kWh",
+        "detail": "Nie myl kosztu ze zużyciem."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "POLE 03",
+        "headline": "DOKUMENT",
+        "detail": "Zapisz fakturę i źródło danych."
+      },
+      {
+        "duration": 3,
+        "eyebrow": "ESG W PRAKTYCE",
+        "headline": "ZAPISZ TO",
+        "detail": "Przyda się przy zbieraniu danych."
+      }
+    ]
+  }
+]
