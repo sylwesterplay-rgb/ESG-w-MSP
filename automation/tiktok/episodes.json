@@ -401,7 +401,11 @@
         "Jedna dobra dokumentacja, różne zastosowania."
       ]
     ],
-    "caption": "EcoVadis a VSME. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy"
+    "caption": "EcoVadis a VSME. Praktyczne ESG i VSME dla małych i średnich firm — sprawdź dane, odpowiedzialności i dokumentację. #ESG #VSME #MŚP #ESG360Academy",
+    "opening_hook": [
+      "KLIENT PYTA O ESG?",
+      "EcoVadis czy VSME?"
+    ]
   },
   {
     "id": "dokumenty",
