@@ -16,7 +16,14 @@ def wrap(draw,msg,font,width):
             lines.append(line);line=word
         else:line=trial
     return lines+[line] if line else lines
-for i,(heading,body) in enumerate(episode["slides"]):
+render_slides = list(episode["slides"])
+hook = episode.get("opening_hook")
+if hook is not None:
+    if not isinstance(hook, list) or len(hook) != 2 or not all(isinstance(x, str) and x.strip() for x in hook):
+        raise ValueError("opening_hook must contain two nonempty strings")
+    render_slides.insert(0, hook)
+for i,(heading,body) in enumerate(render_slides):
+    slide_index = max(0, i-1) if hook else i
     im=Image.new("RGB",(1080,1920),(7,40,35));d=ImageDraw.Draw(im)
     d.rectangle((0,0,1080,24),fill=(187,148,72))
     d.ellipse((730,-190,1320,400),outline=(51,99,81),width=9)
@@ -27,8 +34,8 @@ for i,(heading,body) in enumerate(episode["slides"]):
     for line in wrap(d,heading,f,900): d.text((90,y),line,font=f,fill=(250,245,225));y+=110
     y+=55;f=ImageFont.truetype(regular,56)
     for line in wrap(d,body,f,900): d.text((90,y),line,font=f,fill=(221,230,213));y+=86
-    d.rectangle((90,1665,90+round(900*(i+1)/len(episode["slides"])),1678),fill=(220,185,106))
-    d.text((90,1730),f'ESG W MŚP  •  {i+1}/{len(episode["slides"])}',font=ImageFont.truetype(regular,29),fill=(221,230,213))
+    d.rectangle((90,1665,90+round(900*(slide_index+1)/len(episode["slides"])),1678),fill=(220,185,106))
+    d.text((90,1730),f'ESG W MŚP  •  {slide_index+1}/{len(episode["slides"])}',font=ImageFont.truetype(regular,29),fill=(221,230,213))
     im.save(frames/f"{i:03d}.png")
 video=out/(episode["id"]+".mp4")
 n=len(episode["slides"]); seconds=n*5
@@ -54,6 +61,18 @@ with wave.open(str(music),"wb") as w:
     if block:
         w.writeframes(block)
 
-cmd=["ffmpeg","-hide_banner","-loglevel","error","-y","-framerate","1/5","-i",str(frames/"%03d.png"),"-i",str(music),"-shortest","-c:v","libx264","-pix_fmt","yuv420p","-r","30","-c:a","aac","-b:a","128k","-t",str(seconds),"-movflags","+faststart",str(video)]
+# Optional two-second opening; all remaining frames and total duration preserved.
+if hook:
+    durations = [2, 3] + [5] * (n-1)
+    playlist = frames/"timing.ffconcat"
+    entries = ["ffconcat version 1.0"]
+    for i, duration in enumerate(durations):
+        entries += [f"file '{i:03d}.png'", f"duration {duration}"]
+    entries += [f"file '{len(durations)-1:03d}.png'"]
+    playlist.write_text("\n".join(entries)+"\n")
+    video_input = ["-f", "concat", "-safe", "0", "-i", str(playlist)]
+else:
+    video_input = ["-framerate", "1/5", "-i", str(frames/"%03d.png")]
+cmd=["ffmpeg","-hide_banner","-loglevel","error","-y",*video_input,"-i",str(music),"-shortest","-c:v","libx264","-pix_fmt","yuv420p","-r","30","-c:a","aac","-b:a","128k","-t",str(seconds),"-movflags","+faststart",str(video)]
 subprocess.run(cmd,check=True)
 print(f"RENDERED {video} {video.stat().st_size}")
