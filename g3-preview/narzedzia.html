@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="description" content="ESG360 Academy — odizolowany prototyp TEST ONLY: import CSV, walidacja B3/B7, eksport danych VSME.">
+<title>Narzędzia ESG360 — G3 TEST ONLY</title>
+<style>:root{--navy:#0b2545;--deep:#071d31;--teal:#0f766e;--mint:#77d4c3;--ink:#142b42;--muted:#596a7b;--line:#dbe5e8;--bg:#f5f9f9;--red:#b42318;--amber:#a35d00}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.56 system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:#fff}a{color:inherit;text-decoration:none}button,input{font:inherit}.container{max-width:1180px;width:calc(100% - 48px);margin:auto}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #d4af37;outline-offset:3px}header{background:white;box-shadow:0 1px 0 #dce8e9}.header-inner{min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand-type{display:flex;flex-direction:column;line-height:1}.brand-type strong{font-size:23px;letter-spacing:-1px;color:var(--navy)}.brand-type strong span,footer strong span{color:var(--teal)}.brand-type small{font-size:9px;letter-spacing:4px;font-weight:800;margin-top:6px}nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap}nav a{font-size:13px;font-weight:700}nav a[aria-current=page]{color:var(--teal)}.menu-toggle{display:none;background:white;border:1px solid var(--line);border-radius:9px;padding:7px 10px}.subhero{background:radial-gradient(circle at 85% 40%,#176d6c 0,transparent 39%),linear-gradient(125deg,#0b2545,#071d31 75%);color:white;padding:58px 0 65px}.eyebrow{font-size:12px;letter-spacing:2px;font-weight:850;color:#78e0ce;margin:0 0 17px}.subhero h1{font-size:clamp(38px,4.7vw,60px);line-height:1.11;letter-spacing:-.05em;margin:0 0 18px}.subhero p:last-child{color:#d3e8e8;max-width:820px;margin:0;font-size:17px}.section{padding:44px 0 72px}.section h2{font-size:clamp(26px,3vw,38px);letter-spacing:-.04em;line-height:1.18;margin:0 0 10px}.lead{color:var(--muted);margin:0 0 25px}.ribbon{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff2d8;color:#72400b;border:1px solid #f3d9a3;border-radius:12px;padding:12px 17px;margin-top:24px}.tag{font-weight:850;letter-spacing:1.5px;font-size:11px;white-space:nowrap}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:22px}.panel{background:white;border:1px solid var(--line);border-radius:17px;box-shadow:0 9px 30px #0b25450a;padding:24px;min-width:0}.panel h3{margin:0 0 6px;font-size:21px}.panel p{color:var(--muted);font-size:14px}.panel-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.steps{display:flex;gap:8px;margin:8px 0 22px;flex-wrap:wrap}.step{padding:6px 11px;border-radius:20px;background:#eef7f5;color:#0d655b;font-weight:800;font-size:12px}.actionbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:19px 0}.btn{border:0;border-radius:9px;background:var(--teal);color:white;font-weight:800;padding:12px 17px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}.btn:hover{filter:brightness(1.08)}.btn.secondary{background:#e5f4f1;color:#075e53;border:1px solid #bce4dc}.btn.outline{background:#fff;color:var(--ink);border:1px solid #b8cbd1}.btn:disabled{cursor:not-allowed;opacity:.45;filter:none}.fileinput{max-width:100%;font-size:13px;display:block;padding:10px;background:#f8fbfb;border:1px dashed #a9c9c5;border-radius:9px}.fileinput::file-selector-button{margin-right:12px;border:0;background:#e0f4ed;color:#084c46;border-radius:5px;padding:7px 9px;cursor:pointer}.hint{font-size:12px!important;color:var(--muted);margin:6px 0}.notice{border:1px solid #badfd3;background:#eef9f5;border-radius:10px;padding:11px 14px;font-size:13px;color:#21534a}.notice.error{background:#fff1ee;border-color:#f2b8af;color:#8b271d}.notice.warn{background:#fffaed;border-color:#efdfb1;color:#765105}.kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}.kpi{background:#f5f9f9;border:1px solid #e1eced;border-radius:12px;padding:14px}.kpi span{display:block;font-size:12px;color:var(--muted)}.kpi strong{display:block;margin-top:7px;color:var(--navy);font-size:23px;letter-spacing:-.045em;font-variant-numeric:tabular-nums}.kpi small{font-size:11px;color:var(--muted)}.form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:6px}.field input{width:100%;border:1px solid #bcd0d1;padding:10px 11px;border-radius:9px;font-variant-numeric:tabular-nums}.field small{font-size:10px;color:var(--muted)}.table-container{width:100%;overflow:auto;border:1px solid var(--line);border-radius:11px;margin:15px 0}table{border-collapse:collapse;font-size:12px;width:100%;white-space:nowrap}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #e7edef}th{background:#f4f9f8;font-weight:800;color:#294c57}tbody tr:last-child td{border-bottom:0}.pill{display:inline-block;border-radius:18px;padding:4px 9px;font-size:11px;font-weight:900}.pill-ok{background:#dcfce7;color:#17603f}.pill-block{background:#fee8e7;color:#98241c}.pill-warn{background:#fff2d5;color:#865200}.muted{color:var(--muted)}ul.issues{padding-left:20px;font-size:13px;max-height:300px;overflow:auto}ul.issues li{margin-bottom:8px}.divider{border:0;border-top:1px solid var(--line);margin:24px 0}.footnote{font-size:12px;color:var(--muted);line-height:1.6}.related{display:flex;flex-wrap:wrap;gap:12px;margin-top:27px}.related a{display:inline-block;border:1px solid var(--line);border-radius:11px;padding:12px 18px;font-weight:800;color:var(--teal);font-size:13px}footer{background:#061c30;color:white;padding:30px 0}footer small{display:block;color:#a9c7ce;font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:22px;align-items:center}.footer-inner a{color:#b9d8d7;font-size:12px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.release{display:flex;justify-content:space-between;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}.release strong{max-width:200px}.release code{font-size:12px;background:#f0f5f5;padding:4px 7px;align-self:center}.gap-top{margin-top:25px}.tool-section{background:#f5f9f9;padding:52px 0}.section-eyebrow{font-size:11px;letter-spacing:1.4px;font-weight:900;color:var(--teal);margin-bottom:5px}@media(max-width:880px){.layout{grid-template-columns:1fr}.menu-toggle{display:block}nav{display:none;position:absolute;top:75px;left:0;right:0;background:#fff;z-index:10;padding:18px 24px;box-shadow:0 12px 20px #0002;flex-direction:column;align-items:flex-start}nav.open{display:flex}}@media(max-width:650px){.container{width:calc(100% - 30px)}.panel{padding:18px}.form-grid{grid-template-columns:1fr}.kpi-grid{grid-template-columns:1fr 1fr}.kpi strong{font-size:18px}.subhero{padding:44px 0}.footer-inner{flex-direction:column;align-items:start}.ribbon{align-items:flex-start;flex-direction:column}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head>
+<body><header><div class="container header-inner">
+<a href="https://sylwesterplay-rgb.github.io/ESG-w-MSP/" class="brand" aria-label="ESG360 Academy — strona główna"><span class="brand-type"><strong>ESG<span>360</span></strong><small>ACADEMY</small></span></a>
+<button id="menu-toggle" class="menu-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="menu">☰</button><nav id="menu" aria-label="Menu główne"><a href="https://sylwesterplay-rgb.github.io/ESG-w-MSP/">Start</a><a href="https://sylwesterplay-rgb.github.io/ESG-w-MSP/publikacje.html">Publikacje</a><a href="#narzedzia" aria-current="page">Narzędzia</a><a href="https://sylwesterplay-rgb.github.io/ESG-w-MSP/szkolenia.html">Szkolenia</a><a href="https://sylwesterplay-rgb.github.io/ESG-w-MSP/kontakt.html">Kontakt</a></nav></div></header>
+<main><section class="subhero"><div class="container"><p class="eyebrow">ESG360 ACADEMY / NARZĘDZIA / G3</p><h1>Od wiedzy do działania.</h1><p>Prototyp sprawdzania danych ESG i VSME. Importuj plik CSV, zweryfikuj wskaźniki i przygotuj eksport testowy — bez wysyłania danych na serwer.</p></div></section>
+<section class="tool-section" id="narzedzia"><div class="container">
+<p class="section-eyebrow">PROTOTYP PRYWATNY · 25.10.2026</p><h2>Panel danych ESG360</h2>
+<p class="lead">Dane demonstracyjne GreenPack. Wyniki mają zastosowanie wyłącznie szkoleniowe i nie stanowią zweryfikowanej inwentaryzacji GHG.</p>
+<div class="ribbon" role="status"><strong>Środowisko odizolowane — brak integracji z produkcją</strong><span class="tag">TEST ONLY · NO-GO PUBLISH</span></div>
+<div class="steps"><span class="step">01 Import</span><span class="step">02 Walidacja</span><span class="step">03 Eksport testowy</span></div>
+<div class="layout"><div class="panel"><div class="panel-header"><div><h3>Import CSV</h3><p>Obsługiwany schemat: plik G2 z kolumnami ID, SCOPE, ACTIVITY, YEAR, QUANTITY, UNIT, EMISSION_FACTOR, EF_UNIT, TO_TON_FACTOR, EF_SOURCE, EVIDENCE, MODE.</p></div><span class="pill pill-warn">LOKALNIE</span></div>
+<label for="file" class="sr-only">Wybierz plik CSV danych ESG360</label><input id="file" class="fileinput" type="file" accept=".csv,text/csv" aria-describedby="privacy">
+<p id="privacy" class="hint">Maksymalnie 1 MB, 1000 wierszy, separator średnik (;), liczby dziesiętne z kropką. Plik jest przetwarzany lokalnie w tej karcie przeglądarki — brak transmisji i zapisu trwałego.</p>
+<div class="actionbar"><button id="load-demo" type="button" class="btn secondary">Wczytaj demo GreenPack</button><button type="button" class="btn" id="export" disabled>Eksportuj CSV — TEST ONLY</button></div>
+<div class="notice" id="message" aria-live="polite">Wczytywanie demonstracji...</div>
+<div class="kpi-grid" aria-label="Wskaźniki demonstracyjne">
+<div class="kpi"><span>Scope 1 (dane wejściowe)</span><strong id="scope1">—</strong><small>t CO₂e — wartość modelowa</small></div>
+<div class="kpi"><span>Scope 2 location-based</span><strong id="scope2">—</strong><small>t CO₂ — nie automatycznie CO₂e</small></div>
+<div class="kpi"><span>Scope 3 — suma częściowa</span><strong id="scope3">—</strong><small>t CO₂e, NIE RAPORTOWAĆ</small></div>
+<div class="kpi"><span>Recykling / odpady</span><strong id="recovery">—</strong><small>Przykład B7; kontrola proporcji</small></div>
+</div>
+<hr class="divider"><h3>Dodatkowe dane modelowe B3/B7</h3>
+<p class="hint">G2 podaje energię 1598,899 MWh i odpady 64,5 t / recykling 48,2 t. Te pola nie wynikają z importowanego CSV; należy zweryfikować ich źródło przed jakimkolwiek użyciem poza demonstracją.</p>
+<div class="form-grid"><div class="field"><label for="energy">Energia całkowita (MWh)</label><input id="energy" type="number" min="0" step="any" value="1598.899"><small>B3 — model z G2</small></div>
+<div class="field"><label for="waste">Odpady wytworzone (t)</label><input id="waste" type="number" min="0" step="any" value="64.5"><small>B7 — model GreenPack</small></div>
+<div class="field"><label for="recycled">Recykling (t)</label><input id="recycled" type="number" min="0" step="any" value="48.2"><small>B7 — model GreenPack</small></div></div>
+<h3>Podgląd danych</h3><p class="hint">Źródło: <span id="file-name">Wbudowane demo</span> • wiersze: <span id="rows-count">0</span>. Wyświetlane pierwsze 100 pozycji.</p>
+<div class="table-container" tabindex="0" aria-label="Przewijany podgląd danych CSV"><table><thead><tr><th>ID</th><th>SCOPE</th><th>YEAR</th><th>QUANTITY</th><th>UNIT</th><th>EF</th><th>EVIDENCE</th></tr></thead><tbody id="rows"></tbody></table></div>
+<p class="footnote">Obliczenia: ilość × współczynnik emisji × przelicznik na tony. Dopasowanie jednostek i pochodzenia EF wymaga osobnego audytu; ten prototyp sprawdza tylko część reguł.</p>
+</div><aside class="panel"><h3>Quality Gate</h3><p>Wyniki testów i kontrola danych.</p><div class="release"><strong>Walidacja B3/B7</strong><span id="core-status" class="pill pill-block">FAIL_TEST</span></div>
+<div class="release"><strong>Scope 3</strong><code id="scope3-status">BLOCKED</code></div><div class="release"><strong>Publikacja</strong><span id="release-status" class="pill pill-block">NO-GO</span></div>
+<h3 class="gap-top">Rejestr kontroli (<span id="issue-count">0</span>)</h3><ul id="issues" class="issues" aria-live="polite"></ul>
+<div class="notice warn"><strong>Granice prototypu</strong><p style="margin:5px 0 0;color:inherit">Brak walidacji dokumentów źródłowych, niezależnego przeliczenia w Excelu, certyfikacji standardu oraz eksportu XBRL. Nigdy nie nadaje statusu „gotowe do publikacji”.</p></div>
+<hr class="divider"><p class="footnote"><strong>Reguły ochrony danych</strong>: kod nie korzysta z fetch, zewnętrznych API, cookies ani localStorage. Plik jest analizowany w pamięci tej karty. Eksport CSV zabezpiecza komórki przed automatycznym traktowaniem wprowadzonych tekstów jako formuły arkusza.</p></aside></div>
+<div class="related"><a href="https://sylwesterplay-rgb.github.io/ESG-w-MSP/pakiety.html">Pakiety narzędzi</a><a href="https://sylwesterplay-rgb.github.io/ESG-w-MSP/vsme-30-krokow.html">VSME w 30 krokach</a></div></div></section></main>
+<footer><div class="container footer-inner"><div><strong>ESG<span>360</span> Academy</strong><small>Wiedza. Narzędzia. Wdrożenie.</small></div><div>© 2026 ESG360 Academy · G3 TEST ONLY</div></div></footer>
+<script id="demo-csv" type="text/plain">ID;SCOPE;ACTIVITY;YEAR;QUANTITY;UNIT;EMISSION_FACTOR;EF_UNIT;TO_TON_FACTOR;EF_SOURCE;EVIDENCE;MODE
+S1_GAS;S1;Gaz ziemny — kotłownia;2025;62100;m3;2.02;kg CO2e/m3;0.001;"Silnik GreenPack: KOBiZE — założenie; potwierdzić EF";BRAK_DOWODU;DEMO
+S1_DIESEL;S1;Olej napędowy — flota;2025;32400;L;2.66;kg CO2e/L;0.001;Silnik GreenPack: DEFRA 2025 — założenie;BRAK_DOWODU;DEMO
+S2_GRID_LB;S2_LB;Energia elektryczna sieć PL;2025;580;MWh;0.553;t CO2/MWh;1;Silnik GreenPack: współczynnik CO2 (nie pełny CO2e);BRAK_DOWODU;DEMO
+S3_PE;S3;Zakup PE — kategoria 1;2025;420;t;0.52;t CO2e/t;1;Silnik GreenPack: EF PE — dydaktyczny;BRAK_DOWODU;DEMO
+S3_HGV;S3;Transport HGV — kategoria 4;2025;85000;t-km;0.00076;t CO2e/t-km;1;Silnik GreenPack: EF HGV — dydaktyczny;BRAK_DOWODU;DEMO
+S3_WASTE;S3;Odpady — kategoria 5;2025;12.1;t;0.45;t CO2e/t;1;Silnik GreenPack: EF odpadów — dydaktyczny;BRAK_DOWODU;DEMO
+S3_TRAVEL;S3;Podróże — kategoria 6;2025;18500;pkm;;t CO2e/pkm;1;BRAK EF w pliku źródłowym;BRAK_DOWODU;DEMO
+</script>
+<script>'use strict';
+// ESG360 G3, TEST ONLY: zero network APIs, zero storage APIs, no persistence.
+(function () {
+  const FIELDS = ['ID','SCOPE','ACTIVITY','YEAR','QUANTITY','UNIT','EMISSION_FACTOR','EF_UNIT','TO_TON_FACTOR','EF_SOURCE','EVIDENCE','MODE'];
+  const permittedScopes = new Set(['S1','S2_LB','S3']);
+  const MAX_SIZE = 1024 * 1024;
+  const MAX_ROWS = 1000;
+  const $ = id => document.getElementById(id);
+  const f3 = n => Number.isFinite(n) ? n.toLocaleString('pl-PL',{minimumFractionDigits:3,maximumFractionDigits:3}) : '—';
+  const encode = v => {
+    const s=String(v??'');
+    // Excel/Sheets formula injection mitigation, preserving plain number fields.
+    const safe = /^[\s]*[=+@\-\t\r]/.test(s) && !/^-?(?:\d+\.?\d*|\.\d+)$/.test(s.trim()) ? "'"+s : s;
+    return /[;"\r\n]/.test(safe) ? '"'+safe.replace(/"/g,'""')+'"' : safe;
+  };
+  const toCSV = rows => '\ufeff'+rows.map(r => r.map(encode).join(';')).join('\r\n')+'\r\n';
+  function parseCSV(text) {
+    text = String(text||'').replace(/^\ufeff/,'');
+    let rows=[], row=[], cur='', quote=false;
+    for(let i=0;i<text.length;i++){
+      const ch=text[i];
+      if(quote){if(ch==='"' && text[i+1]==='"'){cur+='"';i++;}else if(ch==='"')quote=false;else cur+=ch;}
+      else if(ch==='"'){if(cur!=='')throw Error('Niepoprawny cudzysłów w CSV.');quote=true;}
+      else if(ch===';'){row.push(cur);cur='';}
+      else if(ch==='\n'){row.push(cur.replace(/\r$/,''));cur='';if(row.some(s=>s.trim()))rows.push(row);row=[];}
+      else cur+=ch;
+    }
+    if(quote) throw Error('Niedomknięty cudzysłów w CSV.');
+    if(cur.length||row.length){row.push(cur.replace(/\r$/,''));if(row.some(s=>s.trim()))rows.push(row);}
+    if(rows.length<2)throw Error('CSV musi mieć nagłówki i co najmniej jeden wiersz.');
+    if(rows.length>MAX_ROWS+1)throw Error('Maksymalnie '+MAX_ROWS+' wierszy danych.');
+    const header=rows.shift().map(v=>v.trim().toUpperCase());
+    if(new Set(header).size!==header.length) throw Error('Zduplikowane nagłówki CSV.');
+    const missing=FIELDS.filter(x=>!header.includes(x));
+    if(missing.length)throw Error('Brak wymaganych kolumn: '+missing.join(', '));
+    return rows.map((r,i)=>{
+      if(r.length!==header.length)throw Error('Niezgodna liczba kolumn w wierszu '+(i+2));
+      const entry={};FIELDS.forEach(key=>entry[key]=(r[header.indexOf(key)]||'').trim());
+      return entry;
+    });
+  }
+  function num(v){
+    if(v===undefined||v===null||String(v).trim()==='')return NaN;
+    // Only strict dot decimal to avoid silently misreading commas or thousands.
+    const s=String(v).trim();return /^-?(\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(s) ? Number(s) : NaN;
+  }
+  const initial={records:[],filename:'',fatal:'',validation:null};
+  let state=initial;
+  function makeNotice(message,kind='info'){
+    const el=$('message');el.textContent=message;el.className='notice '+(kind==='error'?'error':kind==='warn'?'warn':'');
+  }
+  function getSupplemental(){return {energy:num($('energy').value),waste:num($('waste').value),recycled:num($('recycled').value)};}
+  function analyse(){
+    const issues=[],records=state.records,seen=new Set();let calc={S1:0,S2_LB:0,S3:0};let cnt={S1:0,S2_LB:0,S3:0},excluded=0, evidenceComplete=true, fatal=!!state.fatal;
+    if(!records.length){issues.push('Brak danych importowych.');fatal=true;}
+    for(const [i,r] of records.entries()){
+      const row=i+2,scope=r.SCOPE,id=r.ID;
+      if(!id||seen.has(id)){issues.push('Wiersz '+row+': pusty lub powtórzony identyfikator ID.');fatal=true;}
+      seen.add(id);
+      if(!permittedScopes.has(scope)){issues.push('Wiersz '+row+': nieobsługiwany zakres SCOPE.');fatal=true;continue;}
+      const year=num(r.YEAR),qty=num(r.QUANTITY),ef=num(r.EMISSION_FACTOR),factor=num(r.TO_TON_FACTOR);
+      if(!Number.isInteger(year)||year<2000||year>2100){issues.push('Wiersz '+row+': niepoprawny rok.');fatal=true;continue;}
+      if(!(Number.isFinite(qty)&&qty>=0)){issues.push('Wiersz '+row+': ilość musi być liczbą nieujemną z kropką dziesiętną.');fatal=true;continue;}
+      if(!r.UNIT||!r.EF_UNIT||!r.EF_SOURCE){issues.push('Wiersz '+row+': brak jednostki lub źródła współczynnika.');if(scope!=='S3')fatal=true;}
+      if(!(r.EVIDENCE&&r.EVIDENCE!=='BRAK_DOWODU'))evidenceComplete=false;
+      if(scope!=='S3'&&!r.MODE)fatal=true;
+      if(!Number.isFinite(ef)||ef<0||!(Number.isFinite(factor)&&factor>0)){
+        issues.push('Wiersz '+row+' ('+id+'): niepełny współczynnik emisji / konwersja'+(scope==='S3'?' — Scope 3 pominięto.':' — BLOKADA B3.'));
+        if(scope==='S3'){excluded++;continue;}
+        fatal=true;continue;
+      }
+      if(scope==='S2_LB'&&!/CO2\/MWh/i.test(r.EF_UNIT.replace(/\s/g,''))){issues.push('Wiersz '+row+': zweryfikuj jednostkę Scope 2 LB.');fatal=true;}
+      const emission=qty*ef*factor;
+      if(!Number.isFinite(emission)){issues.push('Wiersz '+row+': wynik poza zakresem obliczeniowym.');fatal=true;continue;}
+      cnt[scope]++;calc[scope]+=emission;
+    }
+    if(cnt.S1===0){issues.push('Brak obliczalnej pozycji Scope 1.');fatal=true;}
+    if(cnt.S2_LB===0){issues.push('Brak obliczalnej pozycji Scope 2 LB.');fatal=true;}
+    if(!fatal){const years=new Set(records.filter(r=>r.SCOPE!=='S3').map(r=>r.YEAR));if(years.size!==1){issues.push('B3: niespójne lata danych.');fatal=true;}}
+    const sup=getSupplemental();
+    let b7valid=Number.isFinite(sup.waste)&&Number.isFinite(sup.recycled)&&sup.waste>=0&&sup.recycled>=0&&sup.recycled<=sup.waste;
+    if(!b7valid)issues.push('B7: masa odpadów lub recyklingu jest niepoprawna (recykling nie może przewyższać wytworzenia bez bilansu zapasów).');
+    if(!Number.isFinite(sup.energy)||sup.energy<0)issues.push('B3: brak poprawnej sumarycznej energii MWh (osobne pole modelowe).');
+    if(excluded)issues.push('Scope 3: '+excluded+' pozycja/pozycje bez kompletnego współczynnika — nie raportować częściowej sumy jako całości.');
+    if(!evidenceComplete)issues.push('Brak kompletu dowodów źródłowych — zakaz publikacji.');
+    // The sandbox gate is never promotable to production, even if all numbers & evidence fields look complete.
+    return {fatal,coreOK:!fatal&&Number.isFinite(sup.energy)&&sup.energy>=0&&b7valid,issues,calc,cnt,excluded,evidenceComplete,sup,partialS3:cnt.S3>0,rows:records.length};
+  }
+  function render(){
+    const v=analyse();state.validation=v;
+    $('scope1').textContent=f3(v.calc.S1);$('scope2').textContent=f3(v.calc.S2_LB);
+    $('scope3').textContent=v.partialS3?f3(v.calc.S3):'—';$('recovery').textContent=Number.isFinite(v.sup.waste)&&v.sup.waste>0&&Number.isFinite(v.sup.recycled)?(100*v.sup.recycled/v.sup.waste).toLocaleString('pl-PL',{maximumFractionDigits:2})+'%':'—';
+    $('core-status').textContent=v.coreOK?'PASS_TEST':'FAIL_TEST';$('core-status').className='pill '+(v.coreOK?'pill-ok':'pill-block');
+    $('release-status').textContent='NO-GO';$('release-status').className='pill pill-block';
+    $('scope3-status').textContent=v.excluded>0?'BLOCKED':v.cnt.S3>0?'CZĘŚCIOWE':'BRAK DANYCH';
+    $('issues').replaceChildren();
+    if(!v.issues.length){const li=document.createElement('li');li.textContent='Nie wykryto niezgodności strukturalnych. Publikacja nadal zablokowana (TEST ONLY).';$('issues').append(li);}
+    for(const issue of v.issues){const li=document.createElement('li');li.textContent=issue;$('issues').append(li);}
+    $('issue-count').textContent=String(v.issues.length);
+    $('export').disabled=!v.coreOK;
+    $('rows-count').textContent=String(v.rows);
+    $('file-name').textContent=state.filename||'Wbudowany przykład demonstracyjny';
+    const tbody=$('rows');tbody.replaceChildren();
+    state.records.slice(0,100).forEach(r=>{const tr=document.createElement('tr');for(const k of ['ID','SCOPE','YEAR','QUANTITY','UNIT','EMISSION_FACTOR','EVIDENCE']){const td=document.createElement('td');td.textContent=r[k]||'—';tr.append(td);}tbody.append(tr);});
+    if(state.fatal)makeNotice(state.fatal,'error');else if(v.coreOK)makeNotice('Poprawność techniczna B3/B7: PASS_TEST. Eksport nadal wyłącznie TEST ONLY.','info');else makeNotice('FAIL_TEST: popraw brakujące lub niespójne dane. Eksport zablokowany.','warn');
+  }
+  async function loadUserFile(file){
+    if(!file)return;
+    if(file.size>MAX_SIZE){state={...initial,fatal:'Plik przekracza limit 1 MB.'};render();return;}
+    try{const text=await file.text();state={records:parseCSV(text),filename:file.name,fatal:'',validation:null};}
+    catch(e){state={...initial,fatal:e.message||'Nieprawidłowy plik CSV.'};}
+    render();
+  }
+  function loadDemo(){
+    const text=$('demo-csv').textContent;
+    try{state={records:parseCSV(text),filename:'ESG360_G2_GREENPACK_IMPORT_DEMO.csv (fikcyjny)',fatal:'',validation:null};}
+    catch(e){state={...initial,fatal:'Przykład demonstracyjny nie został wczytany: '+e.message};}
+    $('energy').value='1598.899';$('waste').value='64.5';$('recycled').value='48.2';render();
+  }
+  function exportCSV(){
+    const v=analyse();if(!v.coreOK){render();return;}
+    const year=state.records.find(r=>r.SCOPE==='S1')?.YEAR||'2025';
+    const rows=[['CODE','STANDARD','METRIC','YEAR','VALUE','UNIT','RELEASE_STATUS','EVIDENCE_STATUS'],
+      ['G3_B3_ENERGY','VS 2026 / B3','energy_total',year,v.sup.energy,'MWh','TEST_ONLY','DEMO_SOURCE_NO_EVIDENCE'],
+      ['G3_B3_S1','VS 2026 / B3','scope1',year,v.calc.S1.toFixed(3),'t CO2e — model','TEST_ONLY','NO_VERIFIED_EVIDENCE'],
+      ['G3_B3_S2_LB','VS 2026 / B3','scope2_location_based',year,v.calc.S2_LB.toFixed(3),'t CO2 — model (nie CO2e)','TEST_ONLY','NO_VERIFIED_EVIDENCE'],
+      ['G3_B7_WASTE','VS 2026 / B7','waste_generated',year,v.sup.waste,'t — model','TEST_ONLY','DEMO_SOURCE_NO_EVIDENCE'],
+      ['G3_B7_RECYCLED','VS 2026 / B7','recycled',year,v.sup.recycled,'t — model','TEST_ONLY','DEMO_SOURCE_NO_EVIDENCE'],
+      ['G3_OPTIONAL_S3','DODATKOWE / S3','scope3_incomplete',year,'','t CO2e','BLOCKED','MISSING_EF_OR_NOT_VERIFIED']];
+    const blob=new Blob([toCSV(rows)],{type:'text/csv;charset=utf-8'});
+    const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='ESG360_G3_VS2026_TEST_ONLY_'+year+'.csv';a.hidden=true;document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);
+  }
+  document.addEventListener('DOMContentLoaded',()=>{
+    const menu=$('menu'),toggle=$('menu-toggle');toggle.addEventListener('click',()=>{const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});
+    $('file').addEventListener('change',e=>loadUserFile(e.target.files?.[0]));
+    $('load-demo').addEventListener('click',loadDemo);
+    for(const id of ['energy','waste','recycled'])$(id).addEventListener('input',render);
+    $('export').addEventListener('click',exportCSV);
+    loadDemo();
+  });
+  // Browser-test introspection only: no data leaves the browser.
+  window.__G3_TEST={parseCSV,analyse:()=>analyse(),current:()=>({...state,validation:state.validation}),toCSV};
+})();
+</script></body></html>
